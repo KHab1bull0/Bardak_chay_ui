@@ -10,7 +10,7 @@
 
   color-scheme: light dark;
   color: #000000;
-  background-color: #ffffff;
+  background-color: #F0F5F3;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -29,4 +29,12 @@
 
 .rounded-full {
   border-radius: 100px !important;
+}
+
+.main-bg-color {
+  background-color: #F0F5F3;
+}
+
+.main-bg-color-dark {
+  background-color: #5aad8a;
 }

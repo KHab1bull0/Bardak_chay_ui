@@ -1,0 +1,23 @@
+.custom-menu-item {
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.custom-menu-item:hover {
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.ant-menu-item-selected {
+  background-color: rgba(27, 29, 28, 0.87);
+  border-radius: 5px;
+}
+
+.light-theme .ant-menu-item-selected {
+  border: 1px solid black !important;
+}
+
+.dark-theme .ant-menu-item-selected {
+  border: 1px solid white !important;
+}
