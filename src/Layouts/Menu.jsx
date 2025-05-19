@@ -70,12 +70,12 @@ export const Menu = () => {
 
       return (
             <Layout className={`${theme ? "main-bg-color-dark" : "main-bg-color"}`}>
-                  <Header className={`bg-white fixed top-0 h-[9vh] z-1000 w-[100vw] m-0 p-0`}>
+                  {/* <Header className={`bg-white fixed top-0 h-[9vh] z-1000 w-[100vw] m-0 p-0`}>
                         <div className="flex justify-between items-center">
                               Header
                         </div>
-                  </Header>
-                  <Content className={`min-h-[100vh] pt-20 pb-20 overflow-y-scroll scrollbar-hide`}>
+                  </Header> */}
+                  <Content className={`min-h-[100vh] pb-20 overflow-y-scroll scrollbar-hide`}>
                         <Outlet />
                   </Content>
                   <div className="fixed bottom-0 w-full mt-auto bg-white border-t flex justify-between items-center p-2">

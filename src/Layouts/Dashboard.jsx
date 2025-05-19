@@ -126,7 +126,7 @@ export const Dashboard = () => {
                         </div>
                         <Menu
                               selectedKeys={selectedKeys}
-                              className={`custom-menu ${theme ? "dark-theme" : "dark-theme"}`}
+                              className={`custom-menu ${theme ? "dark-theme" : "dark-theme"} flex flex-col gap-2`}
                               mode="inline"
                               items={items}
                         />
