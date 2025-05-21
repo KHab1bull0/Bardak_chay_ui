@@ -9,7 +9,7 @@ import { BlurredImage } from "../components/Custom/BluredImage";
 import { Button } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 
-export const Menu_List = ({ }) => {
+export const Menu_List = ({ chatId }) => {
       const { theme } = useContext(Context);
       const [data, setData] = useState([])
       console.log(data);
@@ -72,6 +72,9 @@ export const Menu_List = ({ }) => {
             <div className='flex flex-col gap-4 px-3'>
                   <div>
                         Bizni ijtimoiy tarmoqlarda kuzatib boring
+                  </div>
+                  <div>
+                        Chat ID : {chatId}
                   </div>
 
                   {/* Categories */}

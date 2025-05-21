@@ -76,7 +76,7 @@ export const Menu = () => {
                         </div>
                   </Header> */}
                   <Content className={`min-h-[100vh] pb-20 overflow-y-scroll scrollbar-hide`}>
-                        <Outlet />
+                        <Outlet chatId={chatId} />
                   </Content>
                   <div className="fixed bottom-0 w-full mt-auto bg-white border-t flex justify-between items-center p-2">
                         <div className="flex flex-col items-center text-gray-400">
