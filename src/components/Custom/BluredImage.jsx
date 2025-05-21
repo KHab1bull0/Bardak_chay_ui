@@ -22,7 +22,7 @@ export const BlurredImage = ({ src, alt, ...props }) => {
                   />
                   {isLoading && (
                         <div
-                              className="absolute inset-0 bg-gray-200 animate-pulse" // Placeholder
+                              className="absolute inset-0 bg-gray-200" // Placeholder
                               style={{ filter: 'blur(10px)' }}
                         />
                   )}

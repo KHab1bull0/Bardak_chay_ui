@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 import './index.css'
 import App from './App.jsx'
 
@@ -23,14 +23,14 @@ const rooter = createBrowserRouter([
     element: <Login />,
   },
   {
-    path: "/menu",
+    path: "/menu/:chatId",
     element:
       <PublicRoute>
         <Menu />
       </PublicRoute>,
     children: [
       {
-        path: '/menu',
+        path: '/menu/:chatId',
         element:
           <PublicRoute>
             <Menu_List />
@@ -76,7 +76,7 @@ const rooter = createBrowserRouter([
   },
   {
     path: "*",
-    element: <div>Page Not Found</div>,
+    element: <Navigate to='/' />
   }
 ])
 

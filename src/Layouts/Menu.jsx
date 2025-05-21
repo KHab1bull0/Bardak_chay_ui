@@ -1,6 +1,6 @@
 import { Layout } from "antd"
 import { Content, Footer, Header } from "antd/es/layout/layout"
-import { Outlet } from "react-router"
+import { Outlet, useParams } from "react-router"
 import { Context } from "../components/Context";
 import { useContext, useState } from "react";
 import { HomeOutlined, OrderedListOutlined, UserOutlined } from "@ant-design/icons";
@@ -42,11 +42,11 @@ const UserIcon = () => (
 
 export const Menu = () => {
       const { theme, setTheme } = useContext(Context);
-      // Savatcha miqdori
+      const chatId = useParams()
+      console.log(chatId)
       const [cartCount, setCartCount] = useState(1);
-
-      // Aktiv kategoriya
       const [activeCategory, setActiveCategory] = useState(2);
+
 
       const menu = [
             {

@@ -38,3 +38,55 @@
 .main-bg-color-dark {
   background-color: #5aad8a;
 }
+
+/* styles.css */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #e4e4e5 transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 2px;
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 2px;
+}
+
+.bg-lightgreen {
+  background-color: #C3E66E;
+}
+
+.lightgreen {
+  color: #C3E66E;
+
+}
+
+.bg-beji {
+  background-color: #F9F4F1;
+}
+
+.beji {
+  color: #F9F4F1;
+}
+
+.bg-gray {
+  background-color: #8F9093;
+}
+.bg-gray-light {
+  background-color: #dcdde0;
+}
+
+.gray {
+  color: #8F9093;
+}
+
+.bg-orange{
+  background-color: #FFA157;
+}
+
+.orange{
+  color: #FFA157
+}

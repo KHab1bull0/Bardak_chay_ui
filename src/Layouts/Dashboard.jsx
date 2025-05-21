@@ -5,12 +5,13 @@ import { Menu } from "antd"
 import logo from "../assets/logo.svg"
 import { useContext, useEffect, useState } from "react"
 import { Context } from "../components/Context"
-import { BarChartOutlined, BellFilled, MenuOutlined, MoonFilled, OrderedListOutlined, PieChartOutlined, ProductOutlined, SunFilled } from "@ant-design/icons"
+import { BarChartOutlined, BellFilled, BranchesOutlined, MenuOutlined, MoonFilled, OrderedListOutlined, PieChartOutlined, ProductOutlined, SunFilled } from "@ant-design/icons"
+import { TrendingUpOutlined } from "@mui/icons-material"
 
 
 export const Dashboard = () => {
       const navigate = useNavigate();
-      const [selectedKeys, setSelectedKeys] = useState(['1']);
+      const [selectedKey, setSelectedKey] = useState(['1']);
       const location = useLocation();
       const { theme, setTheme } = useContext(Context);
       const [collapsed, setCollapsed] = useState(false);
@@ -27,7 +28,7 @@ export const Dashboard = () => {
                   selectedKey = '4';
             }
 
-            setSelectedKeys([selectedKey]);
+            setSelectedKey(selectedKey);
       }, [location.pathname]);
 
 
@@ -37,10 +38,10 @@ export const Dashboard = () => {
                   key: '1',
                   title: false,
                   label: (
-                        <div className=" flex items-center gap-4">
-                              <BarChartOutlined style={{ fontSize: '20px', color: 'black' }} />
+                        <div className={`flex items-center p-2 pl-5 gap-4`}>
+                              <TrendingUpOutlined style={{ fontSize: '25px', color: 'black' }} />
                               {collapsed ? '' :
-                                    <p>
+                                    <p className="text-lg font-medium">
                                           Statistika
                                     </p>
                               }
@@ -49,16 +50,16 @@ export const Dashboard = () => {
                   onClick: () => {
                         navigate('/')
                   },
-                  className: `${theme ? "main-bg-color-dark" : "main-bg-color"} custom-menu-item`
+                  className: `${theme ? "main-bg-color-dark" : "bg-beji"} custom-menu-item`
             },
             {
                   key: '2',
                   title: false,
                   label: (
-                        <div className=" flex items-center gap-4">
-                              <OrderedListOutlined style={{ fontSize: '20px', color: 'black' }} />
+                        <div className={`flex items-center p-2 pl-5 gap-4`}>
+                              <OrderedListOutlined style={{ fontSize: '25px', color: 'black' }} />
                               {collapsed ? '' :
-                                    <p>
+                                    <p className="text-lg font-medium">
                                           Buyurtma
                                     </p>
                               }
@@ -67,16 +68,16 @@ export const Dashboard = () => {
                   onClick: () => {
                         navigate('/buyurtma')
                   },
-                  className: `${theme ? "main-bg-color-dark" : "main-bg-color"} custom-menu-item`
+                  className: `${theme ? "main-bg-color-dark" : "bg-beji"} custom-menu-item`
             },
             {
                   key: '3',
                   title: false,
                   label: (
-                        <div className=" flex items-center gap-4">
-                              <PieChartOutlined style={{ fontSize: '20px', color: 'black' }} />
+                        <div className={`flex items-center p-2 pl-5 gap-4`}>
+                              <PieChartOutlined style={{ fontSize: '25px', color: 'black' }} />
                               {collapsed ? '' :
-                                    <p>
+                                    <p className="text-lg font-medium">
                                           Kategoriya
                                     </p>
                               }
@@ -85,16 +86,16 @@ export const Dashboard = () => {
                   onClick: () => {
                         navigate('/kategoriya')
                   },
-                  className: `${theme ? "main-bg-color-dark" : "main-bg-color"} custom-menu-item`
+                  className: `${theme ? "main-bg-color-dark" : "bg-beji"} custom-menu-item`
             },
             {
                   key: '4',
                   title: false,
                   label: (
-                        <div className=" flex items-center gap-4">
-                              <ProductOutlined style={{ fontSize: '20px', color: 'black' }} />
+                        <div className={`flex items-center p-2 pl-5 gap-4 `}>
+                              <ProductOutlined style={{ fontSize: '25px', color: 'black', padding: '0px', margin: '0px' }} />
                               {collapsed ? '' :
-                                    <p>
+                                    <p className="text-lg font-medium ">
                                           Mahsulot
                                     </p>
                               }
@@ -103,59 +104,86 @@ export const Dashboard = () => {
                   onClick: () => {
                         navigate('/mahsulot')
                   },
-                  className: `${theme ? "main-bg-color-dark" : "main-bg-color"} custom-menu-item`
+                  className: `${theme ? "main-bg-color-dark" : "bg-beji"} custom-menu-item`
+            },
+            {
+                  key: '5',
+                  title: false,
+                  label: (
+                        <div className={`flex items-center p-2 pl-5 gap-4 `}>
+                              <BranchesOutlined style={{ fontSize: '25px', color: 'black', padding: '0px', margin: '0px' }} />
+                              {collapsed ? '' :
+                                    <p className="text-lg font-medium ">
+                                          Filial
+                                    </p>
+                              }
+                        </div>
+                  ),
+                  onClick: () => {
+                        navigate('/mahsulot')
+                  },
+                  className: `${theme ? "main-bg-color-dark" : "bg-beji"} custom-menu-item`
             }
       ]
 
 
       return (
-            <Layout className={`${theme ? "main-bg-color-dark" : "main-bg-color"} p-2 pr-0 h-full`}>
+            <Layout className={`${theme ? "main-bg-color-dark" : "bg-beji"} h-full`}>
                   <Sider
                         collapsed={collapsed}
-                        width={160}
+                        width={250}
                         style={{
                               position: 'relative',
-                              height: '98vh',
-                              zIndex: 1000,
+                              height: '100vh',
+                              // zIndex: 1000,
                               transition: 'all 0.3s ease-in-out',
                         }}
-                        className="bg-white rounded-xl p-1"
+                        className="bg-white px-2"
                   >
                         <div className="flex justify-center items-center mb-10">
                               <img src={logo} alt="" className="w-[100px] h-[100px] rounded-full object-cover " />
                         </div>
-                        <Menu
+                        {/* <Menu
                               selectedKeys={selectedKeys}
-                              className={`custom-menu ${theme ? "dark-theme" : "dark-theme"} flex flex-col gap-2`}
-                              mode="inline"
+                              className={`custom-menu ${theme ? "dark-theme" : "dark-theme"} flex flex-col gap-3`}
                               items={items}
-                        />
+                        /> */}
+
+                        <div className="flex flex-col gap-3 item-center justify-center">
+                              {items.map(item => {
+                                    return (
+                                          <div key={item.key} className={`${selectedKey === item.key ? "bg-[#C3E66E] " : "hover:bg-[#F9F4F1]"}  cursor-pointer rounded-lg transition-transform`} onClick={item.onClick}>
+                                                {item.label}
+                                          </div>
+                                    )
+                              })}
+                        </div>
 
                   </Sider>
-                  <Layout className={`${theme ? "main-bg-color-dark" : "main-bg-color"} px-3`}>
-                        <Header className="bg-white rounded-xl">
+                  <Layout className={`${theme ? "main-bg-color-dark" : "bg-beji"} px-3`}>
+                        <Header className="bg-white rounded-xl h-[8vh] my-2">
                               <div className="flex items-center justify-between h-full">
                                     <div
-                                          className={`${theme ? "main-bg-color-dark" : "main-bg-color"} w-12 h-12 flex items-center justify-center rounded-full cursor-pointer transition-colors ${theme ? "bg-gray-700" : "bg-white"}`}
+                                          className={`${theme ? "bg-white" : "bg-beji"} w-12 h-12 flex items-center justify-center rounded-full cursor-pointer transition-colors`}
                                           onClick={() => setCollapsed(!collapsed)}
                                     >
-                                          <MenuOutlined className={`${theme ? 'text-white' : 'text-black'} text-xl font-bold cursor-pointer`} />
+                                          <MenuOutlined className={`${theme ? 'text-black' : 'text-black'} text-xl font-bold cursor-pointer`} />
                                     </div>
-                                    <div className='flex justify-between items-center gap-3 mr-2'>
+                                    <div className='flex justify-between items-center gap-3'>
                                           <div
-                                                className={`${theme ? "main-bg-color-dark" : "main-bg-color"} w-12 h-12 flex items-center justify-center rounded-full cursor-pointer transition-colors ${theme ? "bg-gray-700" : "bg-white"}`}
+                                                className={`${theme ? "bg-white" : "bg-beji"} w-12 h-12 flex items-center justify-center rounded-full cursor-pointer transition-colors`}
                                                 onClick={() => {
                                                       setTheme(!theme)
                                                 }}
                                           >
                                                 {
-                                                      theme ? <MoonFilled className='text-2xl text-white translate-x-0' /> : <SunFilled className='text-2xl text-black translate-x-0' />
+                                                      theme ? <MoonFilled className='text-2xl text-black translate-x-0' /> : <SunFilled className='text-2xl text-black translate-x-0' />
                                                 }
                                           </div>
                                     </div>
                               </div>
                         </Header>
-                        <Content className="mt-2">
+                        <Content>
                               <Outlet />
                         </Content>
                   </Layout>
