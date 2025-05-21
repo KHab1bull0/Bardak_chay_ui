@@ -30,7 +30,7 @@ const rooter = createBrowserRouter([
       </PublicRoute>,
     children: [
       {
-        path: '/menu/:chatId',
+        index: true,
         element:
           <PublicRoute>
             <Menu_List />

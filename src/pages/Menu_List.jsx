@@ -9,10 +9,10 @@ import { BlurredImage } from "../components/Custom/BluredImage";
 import { Button } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 
-export const Menu_List = ({ chatId }) => {
+export const Menu_List = ({ }) => {
       const { theme } = useContext(Context);
       const [data, setData] = useState([])
-      console.log(data);
+      const { chatId } = useParams();
 
       useEffect(() => {
             axios.get("https://dummyjson.com/recipes?limit=15&skip=10&select=name,image")

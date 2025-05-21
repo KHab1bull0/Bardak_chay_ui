@@ -42,8 +42,6 @@ const UserIcon = () => (
 
 export const Menu = () => {
       const { theme, setTheme } = useContext(Context);
-      const chatId = useParams()
-      console.log(chatId)
       const [cartCount, setCartCount] = useState(1);
       const [activeCategory, setActiveCategory] = useState(2);
 
@@ -76,7 +74,7 @@ export const Menu = () => {
                         </div>
                   </Header> */}
                   <Content className={`min-h-[100vh] pb-20 overflow-y-scroll scrollbar-hide`}>
-                        <Outlet chatId={chatId} />
+                        <Outlet />
                   </Content>
                   <div className="fixed bottom-0 w-full mt-auto bg-white border-t flex justify-between items-center p-2">
                         <div className="flex flex-col items-center text-gray-400">
