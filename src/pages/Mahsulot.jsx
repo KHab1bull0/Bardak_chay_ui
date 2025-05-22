@@ -94,8 +94,8 @@ export const Mahsulot = () => {
                                           <div className="flex flex-wrap gap-4">
                                                 {products.length > 0 && products.filter((p) => p?.category?.id === cat?.id).map((p) => {
                                                       // const baseUrl = 'http://localhost:8080/'
-                                                      const baseUrl = 'https://b7a1-89-236-218-41.ngrok-free.app'
-                                                      https://b7a1-89-236-218-41.ngrok-free.app
+                                                      const baseUrl = 'https://b7a1-89-236-218-41.ngrok-free.app/'
+                                                      
                                                       return (
                                                             <div
                                                                   className={`${theme ? "bg-white" : "bg-beji"} w-[300px] min-h-[200px] max-h-[500px] p-4 rounded-xl shadow-md flex flex-col justify-between items-start gap-1`}

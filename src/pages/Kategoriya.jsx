@@ -44,8 +44,7 @@ export const Kategoriya = () => {
                   <div className="mt-6 flex flex-wrap gap-4 h-[85%] overflow-auto custom-scrollbar">
                         {data?.length > 0 && data.map((item) => {
                               // const baseUrl = 'http://localhost:8080/'
-                              const baseUrl = 'https://b7a1-89-236-218-41.ngrok-free.app'
-                              https://b7a1-89-236-218-41.ngrok-free.app
+                              const baseUrl = 'https://b7a1-89-236-218-41.ngrok-free.app/'
                               return (
                                     <div
                                           className={`${theme ? "bg-white" : "bg-beji"} w-[300px] min-h-[200px] max-h-[400px] p-4 rounded-xl flex flex-col justify-between items-start gap-1`}
