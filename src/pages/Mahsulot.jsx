@@ -65,7 +65,7 @@ export const Mahsulot = () => {
                   <div className="flex justify-start items-center gap-4 mt-[10px]">
                         <h1 className="text-2xl font-bold">Mahsulot</h1>
                   </div>
-                  <div className="flex justify-between items-center gap-4 mt-10 bg-beji p-2 rounded-xl">
+                  <div className="flex justify-between items-center gap-4 mt-10 bg-beji p-2 rounded-xl sticky top-2" style={{ zIndex: 100 }}>
                         <div className="flex gap-3">
                               {categories?.length > 0 && categories.map((cat) => {
                                     return (
@@ -96,7 +96,7 @@ export const Mahsulot = () => {
                                                       const baseUrl = 'http://localhost:8080/'
                                                       return (
                                                             <div
-                                                                  className={`${theme ? "bg-white" : "bg-beji"} w-[300px] min-h-[200px] max-h-[450px] p-4 rounded-xl shadow-md flex flex-col justify-between items-start gap-1`}
+                                                                  className={`${theme ? "bg-white" : "bg-beji"} w-[300px] min-h-[200px] max-h-[500px] p-4 rounded-xl shadow-md flex flex-col justify-between items-start gap-1`}
                                                                   onClick={() => {
                                                                         setSelected(p.id);
                                                                         form.setFieldsValue({
@@ -112,7 +112,7 @@ export const Mahsulot = () => {
                                                                   }}
                                                             >
                                                                   <div className="flex justify-center items-center w-full">
-                                                                        <BlurredImage src={baseUrl + p.image} alt={p.name} className="w-full h-[220px] rounded-lg" />
+                                                                        <BlurredImage src={baseUrl + p.image} alt={p.name} className="w-[250px] h-[250px] object-cover rounded-lg" />
                                                                   </div>
                                                                   <div className={`${theme ? "text-black" : "text-black"} w-full`}>
                                                                         <h2 className="text-lg font-semibold text-center">{p.name}</h2>

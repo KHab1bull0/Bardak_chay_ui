@@ -99,7 +99,13 @@ export const Add = ({ addModal, setAddModal, refresh, setRefresh, categories }) 
                                     name="size"
                                     rules={[{ required: false, message: "O'lchamini belgilanmagan!" }]}
                               >
-                                    <Input placeholder="O'lchamini kiriting" />
+                                    <Select
+                                          placeholder="O'lchamini belgilang"
+                                    >
+                                          <Select.Option key="big" value="katta">Katta</Select.Option>
+                                          <Select.Option key="middle" value="o'rta">O'rta</Select.Option>
+                                          <Select.Option key="small" value="kichik">Kichik</Select.Option>
+                                    </Select>
                               </Form.Item>
                               <Form.Item
                                     label={<p className={`${theme ? "text-gray-200" : "text-gray-700"} font-semibold text-base`}>Mahsulotni rasmi</p>}

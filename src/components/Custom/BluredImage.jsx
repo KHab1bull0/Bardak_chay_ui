@@ -15,6 +15,7 @@ export const BlurredImage = ({ src, alt, ...props }) => {
                         src={src}
                         alt={alt}
                         style={{
+                              zIndex: 1,
                               filter: isLoading ? 'blur(10px)' : 'none',
                               transition: 'filter 0.5s ease-in-out',
                         }}

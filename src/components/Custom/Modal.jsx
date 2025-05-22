@@ -27,7 +27,8 @@ const CustomModal = ({ title, open, onCancel, className, children, footer }) => 
       return (
             <div
                   onClick={onCancel}
-                  className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 overflow-y-auto py-10 scrollbar-hide"
+                  className="fixed inset-0  flex items-center justify-center bg-black bg-opacity-50 overflow-y-auto py-10 scrollbar-hide"
+                  style={{zIndex: 1000}}
             >
                   <div
                         className={`relative ${className}`}

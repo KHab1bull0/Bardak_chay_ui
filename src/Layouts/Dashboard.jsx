@@ -6,7 +6,7 @@ import logo from "../assets/logo.svg"
 import { useContext, useEffect, useState } from "react"
 import { Context } from "../components/Context"
 import { BarChartOutlined, BellFilled, BranchesOutlined, MenuOutlined, MoonFilled, OrderedListOutlined, PieChartOutlined, ProductOutlined, SunFilled } from "@ant-design/icons"
-import { TrendingUpOutlined } from "@mui/icons-material"
+import { Logout, TrendingUpOutlined } from "@mui/icons-material"
 
 
 export const Dashboard = () => {
@@ -15,6 +15,7 @@ export const Dashboard = () => {
       const location = useLocation();
       const { theme, setTheme } = useContext(Context);
       const [collapsed, setCollapsed] = useState(false);
+
 
       useEffect(() => {
             const path = location.pathname;
@@ -140,25 +141,38 @@ export const Dashboard = () => {
                         }}
                         className="bg-white px-2"
                   >
-                        <div className="flex justify-center items-center mb-10">
-                              <img src={logo} alt="" className="w-[100px] h-[100px] rounded-full object-cover " />
-                        </div>
-                        {/* <Menu
+                        <div className="h-full flex flex-col justify-between py-5">
+                              <div>
+                                    <div className="flex justify-center items-center mb-10">
+                                          <img src={logo} alt="" className="w-[100px] h-[100px] rounded-full object-cover " />
+                                    </div>
+                                    {/* <Menu
                               selectedKeys={selectedKeys}
                               className={`custom-menu ${theme ? "dark-theme" : "dark-theme"} flex flex-col gap-3`}
                               items={items}
                         /> */}
 
-                        <div className="flex flex-col gap-3 item-center justify-center">
-                              {items.map(item => {
-                                    return (
-                                          <div key={item.key} className={`${selectedKey === item.key ? "bg-[#C3E66E] " : "hover:bg-[#F9F4F1]"}  cursor-pointer rounded-lg transition-transform`} onClick={item.onClick}>
-                                                {item.label}
-                                          </div>
-                                    )
-                              })}
+                                    <div className="flex flex-col gap-3 item-center justify-center">
+                                          {items.map(item => {
+                                                return (
+                                                      <div key={item.key} className={`${selectedKey === item.key ? "bg-[#C3E66E] " : "hover:bg-[#F9F4F1]"}  cursor-pointer rounded-lg transition-transform`} onClick={item.onClick}>
+                                                            {item.label}
+                                                      </div>
+                                                )
+                                          })}
+                                    </div>
+                              </div>
+                              <div
+                                    className="bg-beji p-2 px-4 rounded-xl flex gap-2 justify-start items-center hover:scale-105 transition-transform"
+                                    onClick={() => {
+                                          localStorage.removeItem('token')
+                                          navigate('signin')
+                                    }}
+                              >
+                                    <Logout />
+                                    <p className="text-lg font-medium">Chiqish</p>
+                              </div>
                         </div>
-
                   </Sider>
                   <Layout className={`${theme ? "main-bg-color-dark" : "bg-beji"} px-3`}>
                         <Header className="bg-white rounded-xl h-[8vh] my-2">
