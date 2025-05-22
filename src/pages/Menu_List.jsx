@@ -136,7 +136,9 @@ export const Menu_List = ({ }) => {
 
                                           <div className="grid grid-cols-2 gap-2">
                                                 {products.length > 0 && products.filter((p) => p?.category?.id === cat?.id).map((p, index) => {
-                                                      const baseUrl = 'http://localhost:8080/'
+                                                      // const baseUrl = 'http://localhost:8080/'
+                                                      const baseUrl = 'https://b7a1-89-236-218-41.ngrok-free.app'
+
                                                       return (
                                                             <div key={index} className={`${theme ? "bg-white" : "bg-light-gray"} w-[100%] min-h-[250px] p-2 rounded-xl flex flex-col gap-1`}>
                                                                   <div className="flex justify-center items-center w-full mb-1">
