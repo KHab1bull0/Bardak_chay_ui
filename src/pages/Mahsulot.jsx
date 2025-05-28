@@ -60,28 +60,31 @@ export const Mahsulot = () => {
             }
       }
 
+
       return (
-            <div className={`${theme ? "bg-transparent text-white" : "bg-white text-black"} h-[89vh] overflow-y-scroll scrollbar-hide p-4 rounded-xl`}>
+            <div className={`${theme ? "bg-transparent text-white" : "bg-white text-black"} h-[89vh] overflow-y-scroll scrollbar-hide px-4 rounded-xl`}>
                   <div className="flex justify-start items-center gap-4 mt-[10px]">
                         <h1 className="text-2xl font-bold">Mahsulot</h1>
                   </div>
-                  <div className="flex justify-between items-center gap-4 mt-10 bg-beji p-2 rounded-xl sticky top-2" style={{ zIndex: 100 }}>
-                        <div className="flex gap-3">
-                              {categories?.length > 0 && categories.map((cat) => {
-                                    return (
-                                          <button
-                                                key={cat.id}
-                                                onClick={() => handleScroll(cat.id)}
-                                                className="px-4 py-2 font-semibold bg-white rounded-xl"
-                                          >
-                                                {cat?.name}
-                                          </button>
-                                    )
-                              })}
+                  <div className="sticky top-0 z-[1000] w-full bg-white h-20 flex justify-center items-center">
+                        <div className={`flex justify-between items-center w-full gap-4 bg-beji p-2 rounded-xl `}>
+                              <div className="flex gap-3">
+                                    {categories?.length > 0 && categories.map((cat) => {
+                                          return (
+                                                <button
+                                                      key={cat.id}
+                                                      onClick={() => handleScroll(cat.id)}
+                                                      className="px-4 py-2 font-semibold bg-white rounded-xl"
+                                                >
+                                                      {cat?.name}
+                                                </button>
+                                          )
+                                    })}
+                              </div>
+                              <button onClick={() => setAddModal(true)} className="font-semibold bg-lightgreen p-2 bg-white rounded-xl" >Qo'shish</button>
                         </div>
-                        <button onClick={() => setAddModal(true)} className="font-semibold bg-lightgreen p-2 bg-white rounded-xl" >Qo'shish</button>
                   </div>
-                  <div className="flex flex-col gap-4">
+                  <div className="flex flex-col gap-4 px-1 pb-20">
                         {categories?.length > 0 && categories.map((cat) => {
                               return (
                                     <div
@@ -94,8 +97,10 @@ export const Mahsulot = () => {
                                           <div className="flex flex-wrap gap-4">
                                                 {products.length > 0 && products.filter((p) => p?.category?.id === cat?.id).map((p) => {
                                                       // const baseUrl = 'http://localhost:8080/'
-                                                      const baseUrl = 'https://b7a1-89-236-218-41.ngrok-free.app/'
-                                                      
+                                                      const baseUrl = `http://159.223.83.203:8080/`
+
+                                                      // const baseUrl = 'https://b7a1-89-236-218-41.ngrok-free.app/'
+
                                                       return (
                                                             <div
                                                                   className={`${theme ? "bg-white" : "bg-beji"} w-[300px] min-h-[200px] max-h-[500px] p-4 rounded-xl shadow-md flex flex-col justify-between items-start gap-1`}

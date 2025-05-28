@@ -120,9 +120,9 @@ export const Edit = ({ form, selected, setSelected, editModal, setEditModal, ref
                                     <Select
                                           placeholder="O'lchamini belgilang"
                                     >
-                                          <Select.Option key="big" value="katta">Katta</Select.Option>
-                                          <Select.Option key="middle" value="o'rta">O'rta</Select.Option>
-                                          <Select.Option key="small" value="kichik">Kichik</Select.Option>
+                                          <Select.Option key="big" value="Katta">Katta</Select.Option>
+                                          <Select.Option key="middle" value="O'rta">O'rta</Select.Option>
+                                          <Select.Option key="small" value="Kichik">Kichik</Select.Option>
                                     </Select>
                               </Form.Item>
                               <Form.Item

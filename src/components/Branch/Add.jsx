@@ -1,10 +1,11 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Context } from "../Context";
 import CustomModal from "../Custom/Modal";
-import { Button, Form, Input, Select, Upload } from "antd";
+import { Button, Form, Input, Upload } from "antd";
 import axios from '../../api/index'
 import { UploadOutlined } from "@ant-design/icons";
 import TextArea from "antd/es/input/TextArea";
+import { PatternFormat } from "react-number-format";
 
 
 export const Add = ({ addModal, setAddModal, refresh, setRefresh }) => {
@@ -12,28 +13,21 @@ export const Add = ({ addModal, setAddModal, refresh, setRefresh }) => {
       const { theme } = useContext(Context);
       const [logo, setLogo] = useState(null)
       const [image, setImage] = useState(null)
-      const [branches, setBranches] = useState([]);
+      const [phoneNumber, setPhoneNumber] = useState(null);
 
-      useEffect(() => {
-            axios.get(`branch/all`)
-                  .then(res => {
-                        setBranches(res.data.data);
-                  })
-                  .catch(err => {
-                        console.log(err);
-                  })
-      }, [])
-
-      const addCategoryFn = (values) => {
+      const addBranchFn = (values) => {
+            console.log(values);
+            console.log(phoneNumber);
 
             const formData = new FormData()
-            formData.append("branch_id", values?.branch_id);
             formData.append("name", values?.name);
-            formData.append("description", values?.description);
+            formData.append("phone_number", phoneNumber);
+            formData.append("location", values?.location);
+            formData.append("telegram", values?.telegram);
             formData.append("logo", logo);
-            formData.append("image", image);
+            formData.append("cover", image);
 
-            axios.post(`category/create`, formData)
+            axios.post(`branch/create`, formData)
                   .then(res => {
                         setRefresh(!refresh)
                         form.resetFields()
@@ -46,11 +40,18 @@ export const Add = ({ addModal, setAddModal, refresh, setRefresh }) => {
                   })
       }
 
+      const validateCoordinates = (_, value) => {
+            const regex = /^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?),\s*[-+]?((1[0-7]\d)|([1-9]?\d))(\.\d+)?|180(\.0+)?$/;
+            if (regex.test(value)) {
+                  return Promise.resolve();
+            }
+            return Promise.reject(new Error('Koordinatalarni quyidagi formatda kiriting: 41.31124, 69.12412414'));
+      };
 
       return (
             <div>
                   <CustomModal
-                        title="Kategoriya"
+                        title="Filial"
                         open={addModal}
                         onCancel={() => {
                               setAddModal(false)
@@ -59,7 +60,7 @@ export const Add = ({ addModal, setAddModal, refresh, setRefresh }) => {
                         footer={
                               <div className="flex justify-end gap-2">
                                     <button
-                                          className={`${theme ? "bg-gray-700 text-white" : "bg-white text-black font-semibold"} p-2 rounded-xl hover:scale-105`}
+                                          className={`${theme ? "bg-gray-700 text-white" : "bg-white text-black font-semibold"} p-2 outline-gray-200 rounded-xl hover:scale-105`}
                                           onClick={() => form.submit()}
                                     >
                                           Saqlash
@@ -67,32 +68,57 @@ export const Add = ({ addModal, setAddModal, refresh, setRefresh }) => {
                               </div>
                         }
                   >
-                        <Form layout="vertical" form={form} onFinish={addCategoryFn}>
+                        <Form layout="vertical" form={form} onFinish={addBranchFn}>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-black"}`}>Kategoriya nomi</p>}
+                                    label={<p className={`${theme ? "text-gray-200" : "text-black"}`}>Filial nomi</p>}
                                     style={{ marginBottom: '10px' }}
                                     name="name"
                                     rules={[{ required: true, message: "Nomi yozilmagan!" }]}
                               >
-                                    <Input placeholder="Kategoriya nomini kiriting" />
+                                    <Input placeholder="Filial nomini kiriting" />
                               </Form.Item>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-black"}`}>Kategoriya uchun izoh</p>}
+                                    label={<p className={`${theme ? "text-gray-200" : "text-black"}`}>Filial telefon raqam</p>}
                                     style={{ marginBottom: '10px' }}
-                                    name="description"
+                                    name="phone_number"
+                                    rules={[{ required: true, message: "Raqam yozilmagan!" }]}
+                              >
+                                    <PatternFormat
+                                          placeholder="+998 (__) ___-__-__"
+                                          format="+998 (##) ###-##-##"
+                                          mask="_"
+                                          onValueChange={(values) => {
+                                                setPhoneNumber(values.value)
+                                          }}
+                                          className="w-full px-2 py-1 border rounded bg-white focus-visible:outline-none "
+                                    />
+                              </Form.Item>
+                              <Form.Item
+                                    label={<p className={`${theme ? "text-gray-200" : "text-black"}`}>Filial kordinatasi</p>}
+                                    style={{ marginBottom: '10px' }}
+                                    name="location"
+                                    rules={[{ required: true, message: "Manzil 41.336409, 69.2099291 shu formatda bo'lishi kerak!", validator: validateCoordinates }]}
+                              >
+                                    <Input
+                                          placeholder="Filial kordinatalari (41.336409, 69.2099291)"
+                                    />
+                              </Form.Item>
+                              <Form.Item
+                                    label={<p className={`${theme ? "text-gray-200" : "text-black"}`}>Telegram username</p>}
+                                    style={{ marginBottom: '10px' }}
+                                    name="telegram"
                                     rules={[{ required: true, message: "Izoh yozilmagan!" }]}
                               >
-                                    <TextArea placeholder="Kategoriya uchun izoh kiriting" autoSize={{ minRows: 2 }} />
+                                    <Input placeholder="Filial telegram username" />
                               </Form.Item>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-black"}`}>Kategoriya uchun logo</p>}
+                                    label={<p className={`${theme ? "text-gray-200" : "text-black"}`}>Filial logo</p>}
                                     name="logo"
                                     style={{ marginBottom: '10px' }}
                                     className="mb-2"
                                     rules={[{ required: true, message: "Rasm joylanmagan!" }]}
                               >
                                     <Upload
-                                          // beforeUpload={() => false} // Faylni avtomatik yuklamaslik uchun
                                           accept=".png,.jpg,.jpeg"
                                           maxCount={1}
                                           onChange={(info) => {
@@ -104,14 +130,13 @@ export const Add = ({ addModal, setAddModal, refresh, setRefresh }) => {
                                     </Upload>
                               </Form.Item>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-black"}`}>Kategoriya uchun image</p>}
+                                    label={<p className={`${theme ? "text-gray-200" : "text-black"}`}>Filial cover uchun rasm</p>}
                                     style={{ marginBottom: '20px' }}
-                                    name="image"
+                                    name="cover"
                                     className="mb-2"
                                     rules={[{ required: true, message: "Rasm joylanmagan!" }]}
                               >
                                     <Upload
-                                          beforeUpload={() => false}
                                           accept=".png,.jpg,.jpeg"
                                           maxCount={1}
                                           onChange={(info) => {
@@ -121,21 +146,6 @@ export const Add = ({ addModal, setAddModal, refresh, setRefresh }) => {
                                     >
                                           <Button icon={<UploadOutlined />}>Image tanlash</Button>
                                     </Upload>
-                              </Form.Item>
-                              <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-gray-700"} font-semibold text-base`}>Filial</p>}
-                                    style={{ marginBottom: '20px' }}
-                                    name="branch_id"
-                                    rules={[{ required: true, message: "Filial tanlanmagan!" }]}
-
-                              >
-                                    <Select
-                                          placeholder='Filialni tanlang!'
-                                    >
-                                          {branches.length > 0 && branches.map(branch => (
-                                                <Select.Option key={branch.id} value={branch.id}>{branch.name}</Select.Option>
-                                          ))}
-                                    </Select>
                               </Form.Item>
                         </Form>
                   </CustomModal>

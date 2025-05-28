@@ -61,7 +61,12 @@
 
 .lightgreen {
   color: #C3E66E;
-
+}
+.lightgreen2 {
+  color: #b0d164;
+}
+.lightgreen3 {
+  color: #94bc38;
 }
 
 .bg-beji {
@@ -84,9 +89,39 @@
 }
 
 .bg-orange{
-  background-color: #FFA157;
+  background-color: #ffa946;
 }
 
 .orange{
-  color: #FFA157
+  color: #ffa946
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+    /* Yuqoridan boshlaydi */
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    /* Ko'rinadigan holat */
+  }
+}
+
+.animate-slide-up {
+  opacity: 0;
+  /* Boshlang‘ich holat: ko‘rinmas */
+  transform: translateY(100%);
+  /* Pastdan boshlanadi */
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  /* 0.5 soniya animatsiya */
+}
+
+.animate-slide-up.visible {
+  opacity: 1;
+  /* Ko‘rinadigan holat */
+  transform: translateY(0);
+  /* Normal pozitsiya */
 }

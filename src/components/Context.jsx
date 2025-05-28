@@ -7,12 +7,15 @@ const ContextProvider = ({ children }) => {
             const savedMode = localStorage.getItem("darkmode");
             return savedMode === "true"; // Convert string to boolean
       });
+      const [orders, setOrders] = useState([]);
+      const [chatIdState, setChatId] = useState()
+      const [isFirst, setIsFirst] = useState(true)
 
       // Update localStorage whenever theme changes
       useEffect(() => {
             localStorage.setItem("darkmode", theme);
       }, [theme]);
 
-      return <Context.Provider value={{ theme, setTheme }}>{children}</Context.Provider>
+      return <Context.Provider value={{ theme, setTheme, orders, setOrders, chatIdState, setChatId, isFirst, setIsFirst }}>{children}</Context.Provider>
 }
 export { Context, ContextProvider }

@@ -10,11 +10,11 @@ import { Kategoriya } from './pages/Kategoriya.jsx'
 import { Mahsulot } from './pages/Mahsulot.jsx'
 import { ContextProvider } from './components/Context.jsx'
 import { Login } from './pages/Auth/Login.jsx'
-import Auth from './pages/Auth/Auth.jsx'
 import { PublicRoute } from './components/Provider/PublicRoute.jsx'
 import { PrivateRoute } from './components/Provider/PrivateRoute.jsx'
 import { Menu } from './Layouts/Menu.jsx'
-import { Menu_List } from './pages/Menu_List.jsx'
+import { MainPage } from './pages/Menu/Main.jsx'
+import { Branch } from './pages/Branch.jsx'
 
 
 const rooter = createBrowserRouter([
@@ -33,14 +33,17 @@ const rooter = createBrowserRouter([
         index: true,
         element:
           <PublicRoute>
-            <Menu_List />
+            <MainPage />
           </PublicRoute>,
       }
     ]
   },
   {
     path: '/',
-    element: <Dashboard />,
+    element:
+      <PrivateRoute>
+        <Dashboard />
+      </PrivateRoute>,
     children: [
       {
         path: '/',
@@ -69,9 +72,14 @@ const rooter = createBrowserRouter([
           <PrivateRoute>
             <Mahsulot />
           </PrivateRoute>,
+      },
+      {
+        path: 'branch',
+        element:
+          <PrivateRoute>
+            <Branch />
+          </PrivateRoute>,
       }
-      // ]
-      // }
     ]
   },
   {

@@ -6,6 +6,7 @@ import axios from "../../api";
 
 
 import { LoadingOutlined, LockOutlined, UserOutlined } from '@ant-design/icons';
+import toast, { Toaster } from "react-hot-toast";
 
 
 export const Login = () => {
@@ -17,28 +18,25 @@ export const Login = () => {
 
       const loginFn = async (values) => {
             setLoading(true);
-            try {
-                  // const response = await axios.post("/auth/signin", {
-                  //       username: values.username,
-                  //       password: values.password,
-                  // });
-
-                  // if (response.data.accessToken) {
-                  //       const role = response.data.role;
-                  // }
-                  localStorage.setItem("token", 'token');
-                  navigate("/");
-                  console.log(1)
-            } catch (error) {
-                  console.error("Error:", error.response?.data?.message);
-            } finally {
-                  setLoading(false);
-            }
+            axios.post("/auth/signin", {
+                  login: values.username,
+                  password: values.password,
+            })
+                  .then(response => {
+                        localStorage.setItem("token", response.data.access_token);
+                        navigate("/");
+                  })
+                  .catch(err => {
+                        toast.error(err.response.data.message, {icon: '❗️'})
+                        console.log(err.response.data.message)
+                  })
+            setLoading(false);
       };
 
 
       return (
             <div className={`bg-white w-full h-[100vh] flex flex-col justify-center items-center `}>
+                  <Toaster />
                   <Form
                         layout="vertical"
                         initialValues={{ remember: true }}

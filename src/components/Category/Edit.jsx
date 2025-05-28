@@ -1,7 +1,7 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Context } from "../Context";
 import CustomModal from "../Custom/Modal";
-import { Button, Form, Input, Upload } from "antd";
+import { Button, Form, Input, Select, Upload } from "antd";
 import axios from '../../api/index'
 import { UploadOutlined } from "@ant-design/icons";
 import TextArea from "antd/es/input/TextArea";
@@ -11,19 +11,30 @@ export const Edit = ({ form, selected, setSelected, editModal, setEditModal, ref
       const { theme } = useContext(Context);
       const [logo, setLogo] = useState(null)
       const [image, setImage] = useState(null)
+      const [branches, setBranches] = useState([]);
 
+
+      useEffect(() => {
+            axios.get(`branch/all`)
+                  .then(res => {
+                        setBranches(res.data.data);
+                  })
+                  .catch(err => {
+                        console.log(err);
+                  })
+      }, [])
 
       const editCategoryFn = (values) => {
             console.log(values);
             const formData = new FormData()
-            formData.append("branch_id", 1);
+            formData.append("branch_id", values?.branch_id);
             formData.append("name", values?.name);
             formData.append("description", values?.description);
             formData.append("logo", logo);
             formData.append("image", image);
 
             if (selected) {
-                  axios.patch(`category/update/${selected}`, formData)
+                  axios.patch(`branch/update/${selected}`, formData)
                         .then(res => {
                               setRefresh(!refresh);
                               form.resetFields();
@@ -130,6 +141,19 @@ export const Edit = ({ form, selected, setSelected, editModal, setEditModal, ref
                                     >
                                           <Button icon={<UploadOutlined />}>Image tanlash</Button>
                                     </Upload>
+                              </Form.Item>
+                              <Form.Item
+                                    label={<p className={`${theme ? "text-gray-200" : "text-gray-700"} font-semibold text-base`}>{"Filialni"}</p>}
+                                    style={{ marginBottom: '20px' }}
+                                    name="branch_id"
+                              >
+                                    <Select
+                                          placeholder='Kategoryani belgilang'
+                                    >
+                                          {branches.length > 0 && branches.map(branch => (
+                                                <Select.Option key={branch.id} value={branch.id}>{branch.name}</Select.Option>
+                                          ))}
+                                    </Select>
                               </Form.Item>
                         </Form>
                   </CustomModal>

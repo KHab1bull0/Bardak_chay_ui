@@ -7,6 +7,7 @@ import { useContext, useEffect, useState } from "react"
 import { Context } from "../components/Context"
 import { BarChartOutlined, BellFilled, BranchesOutlined, MenuOutlined, MoonFilled, OrderedListOutlined, PieChartOutlined, ProductOutlined, SunFilled } from "@ant-design/icons"
 import { Logout, TrendingUpOutlined } from "@mui/icons-material"
+import { Toaster } from "react-hot-toast"
 
 
 export const Dashboard = () => {
@@ -27,6 +28,8 @@ export const Dashboard = () => {
                   selectedKey = '3';
             } else if (path === '/mahsulot') {
                   selectedKey = '4';
+            } else if (path === '/branch') {
+                  selectedKey = '5';
             }
 
             setSelectedKey(selectedKey);
@@ -37,7 +40,6 @@ export const Dashboard = () => {
       const items = [
             {
                   key: '1',
-                  title: false,
                   label: (
                         <div className={`flex items-center p-2 pl-5 gap-4`}>
                               <TrendingUpOutlined style={{ fontSize: '25px', color: 'black' }} />
@@ -50,12 +52,10 @@ export const Dashboard = () => {
                   ),
                   onClick: () => {
                         navigate('/')
-                  },
-                  className: `${theme ? "main-bg-color-dark" : "bg-beji"} custom-menu-item`
+                  }
             },
             {
                   key: '2',
-                  title: false,
                   label: (
                         <div className={`flex items-center p-2 pl-5 gap-4`}>
                               <OrderedListOutlined style={{ fontSize: '25px', color: 'black' }} />
@@ -68,12 +68,10 @@ export const Dashboard = () => {
                   ),
                   onClick: () => {
                         navigate('/buyurtma')
-                  },
-                  className: `${theme ? "main-bg-color-dark" : "bg-beji"} custom-menu-item`
+                  }
             },
             {
                   key: '3',
-                  title: false,
                   label: (
                         <div className={`flex items-center p-2 pl-5 gap-4`}>
                               <PieChartOutlined style={{ fontSize: '25px', color: 'black' }} />
@@ -86,12 +84,10 @@ export const Dashboard = () => {
                   ),
                   onClick: () => {
                         navigate('/kategoriya')
-                  },
-                  className: `${theme ? "main-bg-color-dark" : "bg-beji"} custom-menu-item`
+                  }
             },
             {
                   key: '4',
-                  title: false,
                   label: (
                         <div className={`flex items-center p-2 pl-5 gap-4 `}>
                               <ProductOutlined style={{ fontSize: '25px', color: 'black', padding: '0px', margin: '0px' }} />
@@ -104,12 +100,10 @@ export const Dashboard = () => {
                   ),
                   onClick: () => {
                         navigate('/mahsulot')
-                  },
-                  className: `${theme ? "main-bg-color-dark" : "bg-beji"} custom-menu-item`
+                  }
             },
             {
                   key: '5',
-                  title: false,
                   label: (
                         <div className={`flex items-center p-2 pl-5 gap-4 `}>
                               <BranchesOutlined style={{ fontSize: '25px', color: 'black', padding: '0px', margin: '0px' }} />
@@ -121,9 +115,8 @@ export const Dashboard = () => {
                         </div>
                   ),
                   onClick: () => {
-                        navigate('/mahsulot')
+                        navigate('/branch')
                   },
-                  className: `${theme ? "main-bg-color-dark" : "bg-beji"} custom-menu-item`
             }
       ]
 
@@ -136,7 +129,7 @@ export const Dashboard = () => {
                         style={{
                               position: 'relative',
                               height: '100vh',
-                              // zIndex: 1000,
+                              zIndex: 1000,
                               transition: 'all 0.3s ease-in-out',
                         }}
                         className="bg-white px-2"
@@ -144,14 +137,8 @@ export const Dashboard = () => {
                         <div className="h-full flex flex-col justify-between py-5">
                               <div>
                                     <div className="flex justify-center items-center mb-10">
-                                          <img src={logo} alt="" className="w-[100px] h-[100px] rounded-full object-cover " />
+                                          <img src={logo} alt="" className={`w-[100px] h-[100px] rounded-full bg-beji object-cover`} />
                                     </div>
-                                    {/* <Menu
-                              selectedKeys={selectedKeys}
-                              className={`custom-menu ${theme ? "dark-theme" : "dark-theme"} flex flex-col gap-3`}
-                              items={items}
-                        /> */}
-
                                     <div className="flex flex-col gap-3 item-center justify-center">
                                           {items.map(item => {
                                                 return (
@@ -163,7 +150,7 @@ export const Dashboard = () => {
                                     </div>
                               </div>
                               <div
-                                    className="bg-beji p-2 px-4 rounded-xl flex gap-2 justify-start items-center hover:scale-105 transition-transform"
+                                    className="bg-beji p-2 px-4 rounded-lg flex gap-2 justify-start items-center hover:scale-105 transition-transform"
                                     onClick={() => {
                                           localStorage.removeItem('token')
                                           navigate('signin')
