@@ -1,9 +1,15 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { Context } from "../components/Context"
+import axios from "axios"
 
 
 export const Buyurtma = () => {
       const { theme } = useContext(Context)
+
+
+      useEffect(() => {
+            axios.get(`order/all`)
+      }, [])
 
       return (
             <div className={`${theme ? "bg-gray-800 text-white" : "bg-white text-black"} h-[89vh] overflow-y-scroll scrollbar-hide p-4 rounded-xl`}>
