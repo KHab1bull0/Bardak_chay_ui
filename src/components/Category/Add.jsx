@@ -69,23 +69,23 @@ export const Add = ({ addModal, setAddModal, refresh, setRefresh }) => {
                   >
                         <Form layout="vertical" form={form} onFinish={addCategoryFn}>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-black"}`}>Kategoriya nomi</p>}
+                                    label={<p className={`${theme ? "text-gray-200" : "text-black"} font-medium text-base`}>Kategoriya nomi</p>}
                                     style={{ marginBottom: '10px' }}
                                     name="name"
                                     rules={[{ required: true, message: "Nomi yozilmagan!" }]}
                               >
-                                    <Input placeholder="Kategoriya nomini kiriting" />
+                                    <Input className="text-lg" placeholder="Kategoriya nomini kiriting" />
                               </Form.Item>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-black"}`}>Kategoriya uchun izoh</p>}
+                                    label={<p className={`${theme ? "text-gray-200" : "text-black"} font-medium text-base`}>Kategoriya uchun izoh</p>}
                                     style={{ marginBottom: '10px' }}
                                     name="description"
                                     rules={[{ required: true, message: "Izoh yozilmagan!" }]}
                               >
-                                    <TextArea placeholder="Kategoriya uchun izoh kiriting" autoSize={{ minRows: 2 }} />
+                                    <TextArea className="text-lg" placeholder="Kategoriya uchun izoh kiriting" autoSize={{ minRows: 2 }} />
                               </Form.Item>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-black"}`}>Kategoriya uchun logo</p>}
+                                    label={<p className={`${theme ? "text-gray-200" : "text-black"} font-medium text-base`}>Kategoriya uchun logo</p>}
                                     name="logo"
                                     style={{ marginBottom: '10px' }}
                                     className="mb-2"
@@ -104,7 +104,7 @@ export const Add = ({ addModal, setAddModal, refresh, setRefresh }) => {
                                     </Upload>
                               </Form.Item>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-black"}`}>Kategoriya uchun image</p>}
+                                    label={<p className={`${theme ? "text-gray-200" : "text-black"} font-medium text-base`}>Kategoriya uchun image</p>}
                                     style={{ marginBottom: '20px' }}
                                     name="image"
                                     className="mb-2"
@@ -123,7 +123,7 @@ export const Add = ({ addModal, setAddModal, refresh, setRefresh }) => {
                                     </Upload>
                               </Form.Item>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-gray-700"} font-semibold text-base`}>Filial</p>}
+                                    label={<p className={`${theme ? "text-gray-200" : "text-gray-700"} font-medium text-base`}>Filial</p>}
                                     style={{ marginBottom: '20px' }}
                                     name="branch_id"
                                     rules={[{ required: true, message: "Filial tanlanmagan!" }]}

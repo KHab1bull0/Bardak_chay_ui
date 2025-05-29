@@ -62,53 +62,54 @@ export const Add = ({ addModal, setAddModal, refresh, setRefresh, categories }) 
                   >
                         <Form layout="vertical" form={form} onFinish={addCategoryFn}>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-gray-700"} font-semibold text-base`}>Mahsulot nomi</p>}
+                                    label={<p className={`${theme ? "text-gray-200" : "text-gray-700"} font-medium text-base`}>Mahsulot nomi</p>}
                                     style={{ marginBottom: '10px' }}
                                     name="name"
                                     rules={[{ required: true, message: "Nomi yozilmagan!" }]}
                               >
-                                    <Input placeholder="Nomini kiriting" />
+                                    <Input className="text-lg" placeholder="Nomini kiriting" />
                               </Form.Item>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-gray-700"} font-semibold text-base`}>Mahsulot uchun izoh</p>}
+                                    label={<p className={`${theme ? "text-gray-200" : "text-gray-700"} font-medium text-base`}>Mahsulot uchun izoh</p>}
                                     style={{ marginBottom: '10px' }}
                                     name="description"
                                     rules={[{ required: true, message: "Izoh yozilmagan!" }]}
                               >
-                                    <TextArea placeholder="Izoh kiriting" autoSize={{ minRows: 2 }} />
+                                    <TextArea className="text-lg" placeholder="Izoh kiriting" autoSize={{ minRows: 2 }} />
                               </Form.Item>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-gray-700"} font-semibold text-base`}>{"Mahsulot narxi (UZS) da"}</p>}
+                                    label={<p className={`${theme ? "text-gray-200" : "text-gray-700"} font-medium text-base`}>{"Mahsulot narxi (UZS) da"}</p>}
                                     style={{ marginBottom: '10px' }}
                                     name="price"
                                     rules={[{ required: true, message: "Narxi belgilanmagan!" }]}
                               >
-                                    <Input type="number" placeholder="Narxini kiriting" />
+                                    <Input className="text-lg" type="number" placeholder="Narxini kiriting" />
                               </Form.Item>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-gray-700"} font-semibold text-base`}>{"Mahsulot vazni (gr, ml)"}</p>}
+                                    label={<p className={`${theme ? "text-gray-200" : "text-gray-700"} font-medium text-base`}>{"Mahsulot vazni (gr, ml)"}</p>}
                                     style={{ marginBottom: '10px' }}
                                     name="weight"
                                     rules={[{ required: false, message: "Vazni belgilanmagan!" }]}
                               >
-                                    <Input placeholder="Vaznini kiriting" />
+                                    <Input className="text-xl" placeholder="Vaznini kiriting" />
                               </Form.Item>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-gray-700"} font-semibold text-base`}>{"Mahsulot o'lchami (Kichik, o'rta, katta)"}</p>}
+                                    label={<p className={`${theme ? "text-gray-200" : "text-gray-700"} font-medium text-base`}>{"Mahsulot o'lchami (Kichik, o'rta, katta)"}</p>}
                                     style={{ marginBottom: '10px' }}
                                     name="size"
                                     rules={[{ required: false, message: "O'lchamini belgilanmagan!" }]}
                               >
                                     <Select
+                                          className="text-lg"
                                           placeholder="O'lchamini belgilang"
                                     >
-                                          <Select.Option key="big" value="Katta">Katta</Select.Option>
-                                          <Select.Option key="middle" value="O'rta">O'rta</Select.Option>
-                                          <Select.Option key="small" value="Kichik">Kichik</Select.Option>
+                                          <Select.Option className="text-xl" key="big" value="Katta">Katta</Select.Option>
+                                          <Select.Option className="text-xl" key="middle" value="O'rta">O'rta</Select.Option>
+                                          <Select.Option className="text-xl" key="small" value="Kichik">Kichik</Select.Option>
                                     </Select>
                               </Form.Item>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-gray-700"} font-semibold text-base`}>Mahsulotni rasmi</p>}
+                                    label={<p className={`${theme ? "text-gray-200" : "text-gray-700"} font-medium text-base`}>Mahsulotni rasmi</p>}
                                     style={{ marginBottom: '20px' }}
                                     name="image"
                                     className="mb-2"
@@ -127,7 +128,7 @@ export const Add = ({ addModal, setAddModal, refresh, setRefresh, categories }) 
                                     </Upload>
                               </Form.Item>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-gray-700"} font-semibold text-base`}>{"Mahsulot kategoriyasi"}</p>}
+                                    label={<p className={`${theme ? "text-gray-200" : "text-gray-700"} font-medium text-base`}>{"Mahsulot kategoriyasi"}</p>}
                                     style={{ marginBottom: '10px' }}
                                     name="category_id"
                                     rules={[{ required: true, message: "Kategoriya belgilanmagan!" }]}

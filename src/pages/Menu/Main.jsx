@@ -146,7 +146,7 @@ export const MainPage = () => {
                   <div className="w-full p-2 bg-white rounded-xl shadow-md">
                         <div className="flex gap-4 p-2 whitespace-nowrap overflow-x-scroll scrollbar-hide">
                               {branches?.length > 0 && branches.map((branch, index) => {
-                                    const url = `http://159.223.83.203:8080/${branch.cover}`
+                                    const url = `https://bardak.mohirsoft.uz/${branch.cover}`
                                     // const url = `http://localhost:8080/${branch.cover}`
 
                                     return (
@@ -169,7 +169,7 @@ export const MainPage = () => {
                               </div>
                               {categories.map((item, index) => {
                                     // const src = `http://localhost:8080/${item.image}`;
-                                    const src = `http://159.223.83.203:8080/${item.image}`
+                                    const src = `https://bardak.mohirsoft.uz/${item.image}`
 
                                     return (
                                           <div
@@ -205,7 +205,7 @@ export const MainPage = () => {
                                                             .filter((p) => p?.category?.id === cat?.id)
                                                             .map((p, index) => {
                                                                   // const baseUrl = 'http://localhost:8080/';
-                                                                  const baseUrl = `http://159.223.83.203:8080/`;
+                                                                  const baseUrl = `https://bardak.mohirsoft.uz/`;
 
                                                                   const orderCount = orders.find(order => order.id === p.id)?.count
                                                                   return (
@@ -351,7 +351,7 @@ export const MainPage = () => {
                                           <>
                                                 {orders?.length > 0 && orders.map((order, index) => {
                                                       // const url = `http://localhost:8080/${order?.product?.image}`
-                                                      const url = `http://159.223.83.203:8080/${order?.product?.image}`
+                                                      const url = `https://bardak.mohirsoft.uz/${order?.product?.image}`
 
                                                       return (
                                                             <div key={index} className="flex items-center gap-2 h-24">

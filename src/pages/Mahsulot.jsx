@@ -97,7 +97,7 @@ export const Mahsulot = () => {
                                           <div className="flex flex-wrap gap-4">
                                                 {products.length > 0 && products.filter((p) => p?.category?.id === cat?.id).map((p) => {
                                                       // const baseUrl = 'http://localhost:8080/'
-                                                      const baseUrl = `http://159.223.83.203:8080/`
+                                                      const baseUrl = `https://bardak.mohirsoft.uz/`
 
                                                       // const baseUrl = 'https://b7a1-89-236-218-41.ngrok-free.app/'
 

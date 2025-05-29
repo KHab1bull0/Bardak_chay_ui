@@ -69,7 +69,7 @@ export const Kategoriya = () => {
                   <div className="mt-6 flex flex-wrap gap-4 min-h-[85%] px-1 pb-20">
                         {data?.length > 0 && data.map((item) => {
                               // const baseUrl = 'http://localhost:8080/'
-                              const baseUrl = `http://159.223.83.203:8080/`
+                              const baseUrl = `https://bardak.mohirsoft.uz/`
 
                               const branch_id = localStorage.getItem('branch_id') || selectedBranchId;
                               if (item?.branch?.id === branch_id)

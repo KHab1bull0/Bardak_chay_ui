@@ -93,8 +93,8 @@ export const Branch = () => {
                               </div>
                         </div>
                         {branches?.length > 0 && branches.map((branch, index) => {
-                              const cover = `http://159.223.83.203:8080/${branch.cover}`
-                              const logo = `http://159.223.83.203:8080/${branch.logo}`
+                              const cover = `https://bardak.mohirsoft.uz/${branch.cover}`
+                              const logo = `https://bardak.mohirsoft.uz/${branch.logo}`
                               // const cover = `http://localhost:8080/${branch.cover}`
                               // const logo = `http://localhost:8080/${branch.logo}`
 

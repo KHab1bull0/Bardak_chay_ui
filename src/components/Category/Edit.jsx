@@ -77,7 +77,7 @@ export const Edit = ({ form, selected, setSelected, editModal, setEditModal, ref
                         footer={
                               <div className="flex justify-between">
                                     <button
-                                          className={`${theme ? "bg-gray-700 text-white" : "bg-orange text-white font-semibold"} p-2 rounded-xl hover:scale-105 transition-transform`}
+                                          className={`${theme ? "bg-gray-700 text-white" : "bg-orange2 text-white font-semibold"} p-2 rounded-xl hover:scale-105 transition-transform`}
                                           onClick={deleteCategoryFn}
                                     >
                                           O'chirish
@@ -93,21 +93,21 @@ export const Edit = ({ form, selected, setSelected, editModal, setEditModal, ref
                   >
                         <Form layout="vertical" form={form} onFinish={editCategoryFn}>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-black"}`}>Kategoriya nomi</p>}
+                                    label={<p className={`${theme ? "text-gray-200" : "text-black"} font-medium text-base`}>Kategoriya nomi</p>}
                                     style={{ marginBottom: '10px' }}
                                     name="name"
                               >
                                     <Input />
                               </Form.Item>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-black"}`}>Kategoriya uchun izoh</p>}
+                                    label={<p className={`${theme ? "text-gray-200" : "text-black"} font-medium text-base`}>Kategoriya uchun izoh</p>}
                                     style={{ marginBottom: '10px' }}
                                     name="description"
                               >
                                     <TextArea autoSize={{ minRows: 2 }} />
                               </Form.Item>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-black"}`}>Kategoriya uchun logo</p>}
+                                    label={<p className={`${theme ? "text-gray-200" : "text-black"} font-medium text-base`}>Kategoriya uchun logo</p>}
                                     name="logo"
                                     style={{ marginBottom: '10px' }}
                                     className="mb-2"
@@ -125,7 +125,7 @@ export const Edit = ({ form, selected, setSelected, editModal, setEditModal, ref
                                     </Upload>
                               </Form.Item>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-black"}`}>Kategoriya uchun image</p>}
+                                    label={<p className={`${theme ? "text-gray-200" : "text-black"} font-medium text-base`}>Kategoriya uchun image</p>}
                                     style={{ marginBottom: '20px' }}
                                     name="image"
                                     className="mb-2"
@@ -143,7 +143,7 @@ export const Edit = ({ form, selected, setSelected, editModal, setEditModal, ref
                                     </Upload>
                               </Form.Item>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-gray-700"} font-semibold text-base`}>{"Filialni"}</p>}
+                                    label={<p className={`${theme ? "text-gray-200" : "text-gray-700"} font-medium text-base`}>{"Filial"}</p>}
                                     style={{ marginBottom: '20px' }}
                                     name="branch_id"
                               >
@@ -151,7 +151,7 @@ export const Edit = ({ form, selected, setSelected, editModal, setEditModal, ref
                                           placeholder='Kategoryani belgilang'
                                     >
                                           {branches.length > 0 && branches.map(branch => (
-                                                <Select.Option key={branch.id} value={branch.id}>{branch.name}</Select.Option>
+                                                <Select.Option label={<span className="text-3xl">{branch.name}</span>} key={branch.id} value={branch.id}>{branch.name}</Select.Option>
                                           ))}
                                     </Select>
                               </Form.Item>
