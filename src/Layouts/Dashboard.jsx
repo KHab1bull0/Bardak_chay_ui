@@ -2,7 +2,7 @@ import { Outlet, useLocation, useNavigate } from "react-router"
 import Layout, { Content, Header } from "antd/es/layout/layout"
 import Sider from "antd/es/layout/Sider"
 import { Menu } from "antd"
-import logo from "../assets/logo.svg"
+import logo from "../assets/logo.jpg"
 import { useContext, useEffect, useState } from "react"
 import { Context } from "../components/Context"
 import { BarChartOutlined, BellFilled, BranchesOutlined, MenuOutlined, MoonFilled, OrderedListOutlined, PieChartOutlined, ProductOutlined, SunFilled } from "@ant-design/icons"
@@ -42,7 +42,7 @@ export const Dashboard = () => {
                   key: '1',
                   label: (
                         <div className={`flex items-center p-2 pl-5 gap-4`}>
-                              <TrendingUpOutlined style={{ fontSize: '25px', color: 'black' }} />
+                              <TrendingUpOutlined style={{ fontSize: '25px', color: `${theme ? "white" : "black"}` }} />
                               {collapsed ? '' :
                                     <p className="text-lg font-medium">
                                           Statistika
@@ -58,7 +58,7 @@ export const Dashboard = () => {
                   key: '2',
                   label: (
                         <div className={`flex items-center p-2 pl-5 gap-4`}>
-                              <OrderedListOutlined style={{ fontSize: '25px', color: 'black' }} />
+                              <OrderedListOutlined style={{ fontSize: '25px', color: `${theme ? "white" : "black"}` }} />
                               {collapsed ? '' :
                                     <p className="text-lg font-medium">
                                           Buyurtma
@@ -74,7 +74,7 @@ export const Dashboard = () => {
                   key: '3',
                   label: (
                         <div className={`flex items-center p-2 pl-5 gap-4`}>
-                              <PieChartOutlined style={{ fontSize: '25px', color: 'black' }} />
+                              <PieChartOutlined style={{ fontSize: '25px', color: `${theme ? "white" : "black"}` }} />
                               {collapsed ? '' :
                                     <p className="text-lg font-medium">
                                           Kategoriya
@@ -90,7 +90,7 @@ export const Dashboard = () => {
                   key: '4',
                   label: (
                         <div className={`flex items-center p-2 pl-5 gap-4 `}>
-                              <ProductOutlined style={{ fontSize: '25px', color: 'black', padding: '0px', margin: '0px' }} />
+                              <ProductOutlined style={{ fontSize: '25px', color: `${theme ? "white" : "black"}`, padding: '0px', margin: '0px' }} />
                               {collapsed ? '' :
                                     <p className="text-lg font-medium ">
                                           Mahsulot
@@ -106,7 +106,7 @@ export const Dashboard = () => {
                   key: '5',
                   label: (
                         <div className={`flex items-center p-2 pl-5 gap-4 `}>
-                              <BranchesOutlined style={{ fontSize: '25px', color: 'black', padding: '0px', margin: '0px' }} />
+                              <BranchesOutlined style={{ fontSize: '25px', color: `${theme ? "white" : "black"}`, padding: '0px', margin: '0px' }} />
                               {collapsed ? '' :
                                     <p className="text-lg font-medium ">
                                           Filial
@@ -122,7 +122,7 @@ export const Dashboard = () => {
 
 
       return (
-            <Layout className={`${theme ? "main-bg-color-dark" : "bg-beji"} h-full`}>
+            <Layout className={`${theme ? "bg-dark" : "bg-light"} h-full`}>
                   <Sider
                         collapsed={collapsed}
                         width={250}
@@ -132,17 +132,22 @@ export const Dashboard = () => {
                               zIndex: 1000,
                               transition: 'all 0.3s ease-in-out',
                         }}
-                        className="bg-white px-2"
+                        className={`${theme ? "bg-dark" : "bg-white"} px-2`}
                   >
                         <div className="h-full flex flex-col justify-between py-5">
                               <div>
                                     <div className="flex justify-center items-center mb-10">
-                                          <img src={logo} alt="" className={`w-[100px] h-[100px] rounded-full bg-beji object-cover`} />
+                                          <img src={logo} alt="" className={`w-[60%] h-[60%] rounded-full bg-beji object-cover`} />
                                     </div>
-                                    <div className="flex flex-col gap-3 item-center justify-center">
+                                    <div className={`${theme ? "text-white" : "text-black"} flex flex-col gap-3 item-center justify-center `}>
                                           {items.map(item => {
                                                 return (
-                                                      <div key={item.key} className={`${selectedKey === item.key ? "bg-[#C3E66E] " : "hover:bg-[#F9F4F1]"}  cursor-pointer rounded-lg transition-transform`} onClick={item.onClick}>
+                                                      <div
+                                                            key={item.key}
+                                                            className={`${selectedKey === item.key ? `${theme ? "bg-brown" : "bg-lightgreen"}` : `${theme ? "hover:bg-[#664d58]" :"hover:bg-[#f5ece6]"}`} 
+                                                            cursor-pointer rounded-lg transition-transform`}
+                                                            onClick={item.onClick}
+                                                      >
                                                             {item.label}
                                                       </div>
                                                 )
@@ -162,17 +167,17 @@ export const Dashboard = () => {
                         </div>
                   </Sider>
                   <Layout className={`${theme ? "main-bg-color-dark" : "bg-beji"} px-3`}>
-                        <Header className="bg-white rounded-xl h-[8vh] my-2">
+                        <Header className={`${theme ? "bg-dark" : "bg-white"} rounded-xl h-[8vh] my-2`}>
                               <div className="flex items-center justify-between h-full">
                                     <div
-                                          className={`${theme ? "bg-white" : "bg-beji"} w-12 h-12 flex items-center justify-center rounded-full cursor-pointer transition-colors`}
+                                          className={`${theme ? "bg-light" : "bg-light"} w-12 h-12 flex items-center justify-center rounded-full cursor-pointer transition-colors`}
                                           onClick={() => setCollapsed(!collapsed)}
                                     >
                                           <MenuOutlined className={`${theme ? 'text-black' : 'text-black'} text-xl font-bold cursor-pointer`} />
                                     </div>
                                     <div className='flex justify-between items-center gap-3'>
                                           <div
-                                                className={`${theme ? "bg-white" : "bg-beji"} w-12 h-12 flex items-center justify-center rounded-full cursor-pointer transition-colors`}
+                                                className={`${theme ? "bg-light" : "bg-beji"} w-12 h-12 flex items-center justify-center rounded-full cursor-pointer transition-colors`}
                                                 onClick={() => {
                                                       setTheme(!theme)
                                                 }}

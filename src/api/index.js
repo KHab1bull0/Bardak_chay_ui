@@ -1,8 +1,8 @@
 import axios from "axios";
+import { API_URI } from "../../env";
 
 const main_url = axios.create({
-      baseURL: "https://bardak.mohirsoft.uz/api/v1" // Server
-      // baseURL: "http://localhost:8080/api/v1", // localhost
+      baseURL: `${API_URI}api/v1`
 });
 
 main_url.interceptors.request.use((req) => {

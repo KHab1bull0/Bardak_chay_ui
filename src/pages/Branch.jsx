@@ -7,6 +7,7 @@ import { Button, Form } from "antd";
 import { Add } from "../components/Branch/Add";
 import { Edit } from "../components/Branch/Edit";
 import { formatPhoneNumber } from "../utils";
+import { API_URI } from "../../env";
 
 
 export const Branch = () => {
@@ -34,49 +35,54 @@ export const Branch = () => {
 
 
       return (
-            <div className={`${theme ? "bg-transparent text-white" : "bg-white text-black"} h-[89vh] overflow-y-scroll scrollbar-hide px-4 rounded-xl`}>
+            <div className={`${theme ? "bg-dark text-black" : "bg-white text-black"} h-[89vh] overflow-y-scroll scrollbar-hide px-4 rounded-xl`}>
                   <div className="flex justify-start items-center gap-4 pt-[10px]">
                         <h1 className="text-2xl font-bold">Branch</h1>
                   </div>
-                  <div className="sticky top-0 z-[1000] w-full bg-white h-20 flex justify-center items-center">
+                  <div className={`${theme ? "bg-dark" : "bg-white"} sticky top-0 z-[1000] w-full h-20 flex justify-center items-center`}>
                         <div className={`flex justify-end items-center w-full gap-4 bg-beji p-2 rounded-xl `}>
-                              <button className="font-semibold bg-lightgreen p-2 bg-white rounded-xl" onClick={() => setAddModal(true)} >Qo'shish</button>
+                              <button
+                                    className={`${theme ? "bg-brown text-white" : "bg-lightgreen"} font-semibold p-2 rounded-xl`}
+                                    onClick={() => setAddModal(true)}
+                              >
+                                    Qo'shish
+                              </button>
                         </div>
                   </div>
                   <div className="h-[80%]">
-                        <div className="flex gap-1 justify-start items-center border-b-2 border-gray-400 pt-3 pb-1 w-[100%]">
+                        <div className={`flex gap-1 justify-start items-center border-b-2 ${theme ? "border-black" : "border-gray-400"} pt-3 pb-1 w-[100%]`}>
                               <div
-                                    className={`p-1 text-base h-full flex justify-center items-center  font-medium border-r-2 text-center border-gray-400 w-[3%]`}
+                                    className={`p-1 text-base h-full flex justify-center items-center  font-medium border-r-2 text-center ${theme ? "border-black" : "border-gray-400"} w-[3%]`}
                               >
                                     No
                               </div>
                               <div
-                                    className={`py-1 px-3  text-lg font-medium border-r-2  border-gray-400 w-[25%]`}
+                                    className={`py-1 px-3  text-lg font-medium border-r-2  ${theme ? "border-black" : "border-gray-400"} w-[25%]`}
                               >
                                     Nomi
                               </div>
                               <div
-                                    className={`py-1 px-3  text-lg font-medium border-r-2  border-gray-400 w-[20%]`}
+                                    className={`py-1 px-3  text-lg font-medium border-r-2  ${theme ? "border-black" : "border-gray-400"} w-[20%]`}
                               >
                                     Telefon raqam
                               </div>
                               <div
-                                    className={`py-1 px-3  text-lg font-medium border-r-2  border-gray-400 w-[20%]`}
+                                    className={`py-1 px-3  text-lg font-medium border-r-2  ${theme ? "border-black" : "border-gray-400"} w-[20%]`}
                               >
                                     Lokatsiya
                               </div>
                               <div
-                                    className={`py-1 px-3  text-lg font-medium border-r-2  border-gray-400 w-[20%]`}
+                                    className={`py-1 px-3  text-lg font-medium border-r-2  ${theme ? "border-black" : "border-gray-400"} w-[20%]`}
                               >
                                     Telegram
                               </div>
                               <div
-                                    className={`py-1 px-3  text-lg font-medium border-r-2  border-gray-400 w-[20%]`}
+                                    className={`py-1 px-3  text-lg font-medium border-r-2  ${theme ? "border-black" : "border-gray-400"} w-[20%]`}
                               >
                                     Cover Image
                               </div>
                               <div
-                                    className={`py-1 px-3  text-lg font-medium border-r-2  border-gray-400 w-[20%]`}
+                                    className={`py-1 px-3  text-lg font-medium border-r-2  ${theme ? "border-black" : "border-gray-400"} w-[20%]`}
                               >
                                     Logo
                               </div>
@@ -85,7 +91,7 @@ export const Branch = () => {
                               >
                                     <DashOutlined
                                           style={{
-                                                color: theme ? "white" : "black",
+                                                color: theme ? "black" : "black",
                                                 fontSize: "30px",
                                                 cursor: "pointer",
                                           }}
@@ -93,50 +99,48 @@ export const Branch = () => {
                               </div>
                         </div>
                         {branches?.length > 0 && branches.map((branch, index) => {
-                              const cover = `https://bardak.mohirsoft.uz/${branch.cover}`
-                              const logo = `https://bardak.mohirsoft.uz/${branch.logo}`
-                              // const cover = `http://localhost:8080/${branch.cover}`
-                              // const logo = `http://localhost:8080/${branch.logo}`
+                              const cover_url = `${API_URI}${branch.cover}`
+                              const logo_url = `${API_URI}${branch.logo}`
 
                               return (
-                                    <div key={index} className="flex gap-1 justify-start items-center border-b-2 border-gray-400 pt-3 pb-1 w-[100%] h-24">
+                                    <div key={index} className={`flex gap-1 justify-start items-center border-b-2 ${theme ? "border-black" : "border-gray-400"} pt-3 pb-1 w-[100%] h-24`}>
                                           <div
-                                                className={`p-1 text-base h-full flex justify-center items-center font-medium border-r-2 text-center border-gray-400 w-[3%]`}
+                                                className={`p-1 text-base h-full flex justify-center items-center font-medium border-r-2 text-center ${theme ? "border-black" : "border-gray-400"} w-[3%]`}
                                           >
                                                 {index + 1}
                                           </div>
                                           <div
-                                                className={`px-3 py-1 text-base h-full flex items-center font-medium border-r-2  border-gray-400 w-[25%]`}
+                                                className={`px-3 py-1 text-base h-full flex items-center font-medium border-r-2  ${theme ? "border-black" : "border-gray-400"} w-[25%]`}
                                           >
                                                 {branch.name}
                                           </div>
                                           <div
-                                                className={`px-3 py-1 text-base h-full flex items-center  font-medium border-r-2  border-gray-400 w-[20%]`}
+                                                className={`px-3 py-1 text-base h-full flex items-center  font-medium border-r-2  ${theme ? "border-black" : "border-gray-400"} w-[20%]`}
                                           >
                                                 {formatPhoneNumber(branch.phone_number)}
                                           </div>
                                           <div
-                                                className={`px-3 py-1 text-base h-full flex items-center  font-medium border-r-2  border-gray-400 w-[20%]`}
+                                                className={`px-3 py-1 text-base h-full flex items-center  font-medium border-r-2  ${theme ? "border-black" : "border-gray-400"} w-[20%]`}
                                           >
                                                 {branch.location}
                                           </div>
                                           <div
-                                                className={`px-3 py-1 text-base h-full flex items-center  font-medium border-r-2  border-gray-400 w-[20%]`}
+                                                className={`px-3 py-1 text-base h-full flex items-center  font-medium border-r-2  ${theme ? "border-black" : "border-gray-400"} w-[20%]`}
                                           >
                                                 {branch.telegram}
                                           </div>
                                           <div
-                                                className={`py-1 px-3  text-lg  h-full flex justify-center items-center font-medium border-r-2  border-gray-400 w-[20%]`}
+                                                className={`py-1 px-3  text-lg  h-full flex justify-center items-center font-medium border-r-2  ${theme ? "border-black" : "border-gray-400"} w-[20%]`}
                                           >
                                                 <div >
-                                                      <img className="w-28 h-20 rounded-lg bg-red-300 object-cover" src={cover} alt="Cover image" />
+                                                      <img className="w-28 h-20 rounded-lg bg-red-300 object-cover" src={cover_url} alt="Cover image" />
                                                 </div>
                                           </div>
                                           <div
-                                                className={`py-1 px-3 text-lg h-full flex justify-center items-center font-medium border-r-2  border-gray-400 w-[20%]`}
+                                                className={`py-1 px-3 text-lg h-full flex justify-center items-center font-medium border-r-2  ${theme ? "border-black" : "border-gray-400"} w-[20%]`}
                                           >
                                                 <div >
-                                                      <img className="w-20 h-20 rounded-lg bg-red-300 object-cover" src={logo} alt="Logo" />
+                                                      <img className="w-20 h-20 rounded-lg bg-red-300 object-cover" src={logo_url} alt="Logo" />
                                                 </div>
                                           </div>
                                           <div
@@ -156,7 +160,7 @@ export const Branch = () => {
                                                                   })
                                                             }}
                                                       >
-                                                            <EditOutlined style={{ color: theme ? "white" : "black" }} />
+                                                            <EditOutlined style={{ color: theme ? "black" : "black" }} />
                                                       </div >
 
                                                 </div>
@@ -183,6 +187,6 @@ export const Branch = () => {
                         setRefresh={setRefresh}
                   />
 
-            </div>
+            </div >
       )
 }

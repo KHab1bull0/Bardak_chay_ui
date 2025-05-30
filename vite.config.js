@@ -10,5 +10,8 @@ export default defineConfig({
   },
   server: {
     historyApiFallback: true, // dev server uchun
-  }
+  },
+  define: {
+    'process.env': {}, // Vite uchun process.env'ni aniqlash
+  },
 })

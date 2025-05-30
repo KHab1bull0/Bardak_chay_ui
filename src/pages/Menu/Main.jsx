@@ -10,6 +10,7 @@ import { OrderModal } from "../../components/Custom/OrderModal";
 import TextArea from "antd/es/input/TextArea";
 import { Form, Input, Select } from "antd";
 import toast, { Toaster } from "react-hot-toast";
+import { API_URI } from "../../../env";
 
 
 export const MainPage = () => {
@@ -146,9 +147,7 @@ export const MainPage = () => {
                   <div className="w-full p-2 bg-white rounded-xl shadow-md">
                         <div className="flex gap-4 p-2 whitespace-nowrap overflow-x-scroll scrollbar-hide">
                               {branches?.length > 0 && branches.map((branch, index) => {
-                                    const url = `https://bardak.mohirsoft.uz/${branch.cover}`
-                                    // const url = `http://localhost:8080/${branch.cover}`
-
+                                    const url = `${API_URI}${branch.cover}`
                                     return (
                                           <div key={index} className="min-w-[100%]">
                                                 <BlurredImage src={url} alt={'Cover Image'} className="w-full h-32 object-cover rounded" />
@@ -169,7 +168,7 @@ export const MainPage = () => {
                               </div>
                               {categories.map((item, index) => {
                                     // const src = `http://localhost:8080/${item.image}`;
-                                    const src = `https://bardak.mohirsoft.uz/${item.image}`
+                                    const src = `${API_URI}${item.image}`
 
                                     return (
                                           <div
@@ -189,7 +188,7 @@ export const MainPage = () => {
                         </div>
                   </div>
                   <div className="px-2 pb-20 mt-2 bg-white rounded-xl">
-                        {categories?.length > 0 && categories.map((cat) => {
+                        {categories?.length > 0 && categories?.map((cat) => {
                               return (
                                     <div
                                           key={cat.id}
@@ -205,7 +204,7 @@ export const MainPage = () => {
                                                             .filter((p) => p?.category?.id === cat?.id)
                                                             .map((p, index) => {
                                                                   // const baseUrl = 'http://localhost:8080/';
-                                                                  const baseUrl = `https://bardak.mohirsoft.uz/`;
+                                                                  const baseUrl = `${API_URI}`;
 
                                                                   const orderCount = orders.find(order => order.id === p.id)?.count
                                                                   return (
@@ -351,7 +350,7 @@ export const MainPage = () => {
                                           <>
                                                 {orders?.length > 0 && orders.map((order, index) => {
                                                       // const url = `http://localhost:8080/${order?.product?.image}`
-                                                      const url = `https://bardak.mohirsoft.uz/${order?.product?.image}`
+                                                      const url = `${API_URI}${order?.product?.image}`
 
                                                       return (
                                                             <div key={index} className="flex items-center gap-2 h-24">

@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import "../../App.css";
 import { Context } from "../Context";
-import { ArrowBack, ArrowLeftOutlined, ArrowLeftSharp, CancelOutlined, DeleteOutline, KeyboardBackspace, KeyboardBackspaceSharp, TramSharp } from "@mui/icons-material";
+import { ArrowBack, ArrowLeftOutlined, ArrowLeftSharp, CancelOutlined, Clear, DeleteOutline, KeyboardBackspace, KeyboardBackspaceSharp, TramSharp } from "@mui/icons-material";
 
 
 export const OrderModal = ({ form, title, open, onCancel, className, children, footer, rootClassname, headerClassName }) => {
@@ -55,7 +55,7 @@ export const OrderModal = ({ form, title, open, onCancel, className, children, f
                                     }}
                                     className={`flex justify-center items-center text-3xl transition-transform`}
                               >
-                                    <DeleteOutline fontSize="large" className={`${theme ? "text-white" : "text-black"} text-2xl`} />
+                                    <Clear fontSize="large" className={`${theme ? "text-white" : "text-black"} text-2xl`} />
                               </button>
                         </div>
                         <div>{children}</div>

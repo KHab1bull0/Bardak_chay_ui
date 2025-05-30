@@ -6,6 +6,7 @@ import { BlurredImage } from "../components/Custom/BluredImage"
 import { Add } from "../components/Mahsulot/Add"
 import { Edit } from "../components/Mahsulot/Edit"
 import { formatCurrency } from "../utils"
+import { API_URI } from "../../env"
 
 
 
@@ -62,11 +63,11 @@ export const Mahsulot = () => {
 
 
       return (
-            <div className={`${theme ? "bg-transparent text-white" : "bg-white text-black"} h-[89vh] overflow-y-scroll scrollbar-hide px-4 rounded-xl`}>
+            <div className={`${theme ? "bg-dark text-black" : "bg-white text-black"} h-[89vh] overflow-y-scroll scrollbar-hide px-4 rounded-xl`}>
                   <div className="flex justify-start items-center gap-4 mt-[10px]">
                         <h1 className="text-2xl font-bold">Mahsulot</h1>
                   </div>
-                  <div className="sticky top-0 z-[1000] w-full bg-white h-20 flex justify-center items-center">
+                  <div className={`${theme ? "bg-dark" : "bg-white"} sticky top-0 z-[1000] w-full h-20 flex justify-center items-center`}>
                         <div className={`flex justify-between items-center w-full gap-4 bg-beji p-2 rounded-xl `}>
                               <div className="flex gap-3">
                                     {categories?.length > 0 && categories.map((cat) => {
@@ -81,7 +82,7 @@ export const Mahsulot = () => {
                                           )
                                     })}
                               </div>
-                              <button onClick={() => setAddModal(true)} className="font-semibold bg-lightgreen p-2 bg-white rounded-xl" >Qo'shish</button>
+                              <button onClick={() => setAddModal(true)} className={`${theme ? "bg-brown text-white" : "bg-lightgreen"} font-semibold p-2 rounded-xl`} >Qo'shish</button>
                         </div>
                   </div>
                   <div className="flex flex-col gap-4 px-1 pb-20">
@@ -96,14 +97,11 @@ export const Mahsulot = () => {
                                           }
                                           <div className="flex flex-wrap gap-4">
                                                 {products.length > 0 && products.filter((p) => p?.category?.id === cat?.id).map((p) => {
-                                                      // const baseUrl = 'http://localhost:8080/'
-                                                      const baseUrl = `https://bardak.mohirsoft.uz/`
-
-                                                      // const baseUrl = 'https://b7a1-89-236-218-41.ngrok-free.app/'
+                                                      const image_url = `${API_URI}${p.image}`
 
                                                       return (
                                                             <div
-                                                                  className={`${theme ? "bg-white" : "bg-beji"} w-[300px] min-h-[200px] max-h-[500px] p-4 rounded-xl shadow-md flex flex-col justify-between items-start gap-1`}
+                                                                  className={`${theme ? "bg-beji" : "bg-beji"} w-[300px] min-h-[200px] max-h-[500px] p-4 rounded-xl shadow-md flex flex-col justify-between items-start gap-1`}
                                                                   onClick={() => {
                                                                         setSelected(p.id);
                                                                         form.setFieldsValue({
@@ -119,17 +117,17 @@ export const Mahsulot = () => {
                                                                   }}
                                                             >
                                                                   <div className="flex justify-center items-center w-full">
-                                                                        <BlurredImage src={baseUrl + p.image} alt={p.name} className="w-[250px] h-[250px] object-cover rounded-lg" />
+                                                                        <BlurredImage src={image_url} alt={p.name} className="w-[250px] h-[250px] object-cover rounded-lg" />
                                                                   </div>
                                                                   <div className={`${theme ? "text-black" : "text-black"} w-full`}>
                                                                         <h2 className="text-lg font-semibold text-center">{p.name}</h2>
                                                                         <div className="flex flex-col gap-2">
                                                                               <div className="flex gap-1 justify-between items-center">
-                                                                                    <p className="text-end font-semibold" >{p.size}</p>
+                                                                                    <p className={`${theme ? "bg-brown text-white" : "bg-lightgreen"}  text-end font-semibold p-1 px-3 rounded-xl`} >{p.size}</p>
                                                                                     <p className="text-end font-semibold" >{formatCurrency(Number(p?.price)?.toFixed(0))}<span className="px-1">UZS</span></p>
                                                                               </div>
                                                                               <p className="h-[100px] overflow-auto custom-scrollbar" >{p.description}</p>
-                                                                              <p className="font-semibold p-1 bg-lightgreen rounded-xl">Hajmi: <span className="text-black">{p.weight}</span></p>
+                                                                              <p className={`${theme ? "bg-brown text-white" : "bg-lightgreen"} font-semibold p-1 rounded-xl`}>Hajmi: <span className={`${theme ? "text-white" : "text-black"}`}>{p.weight}</span></p>
                                                                         </div>
                                                                   </div>
                                                             </div>
