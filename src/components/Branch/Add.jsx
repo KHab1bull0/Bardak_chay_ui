@@ -51,16 +51,16 @@ export const Add = ({ addModal, setAddModal, refresh, setRefresh }) => {
       return (
             <div>
                   <CustomModal
-                        title="Filial"
+                        // title="Filial"
                         open={addModal}
                         onCancel={() => {
                               setAddModal(false)
                         }}
-                        className={`${theme ? "bg-gray-500" : "bg-beji"} rounded-lg shadow-lg w-[30%] py-6 px-4`}
+                        className={`${theme ? "bg-dark" : "bg-beji"} rounded-lg shadow-lg w-[30%] py-6 px-4`}
                         footer={
                               <div className="flex justify-end gap-2">
                                     <button
-                                          className={`${theme ? "bg-gray-700 text-white" : "bg-white text-black font-semibold"} p-2 outline-gray-200 rounded-xl hover:scale-105`}
+                                          className={`${theme ? "bg-brown text-white" : "bg-white text-black"} p-2 font-semibold rounded-xl hover:scale-105`}
                                           onClick={() => form.submit()}
                                     >
                                           Saqlash
@@ -70,15 +70,15 @@ export const Add = ({ addModal, setAddModal, refresh, setRefresh }) => {
                   >
                         <Form layout="vertical" form={form} onFinish={addBranchFn}>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-black"}`}>Filial nomi</p>}
+                                    label={<p className={`${theme ? "text-black" : "text-black"} text-xl font-medium mt-3`}>Filial nomi</p>}
                                     style={{ marginBottom: '10px' }}
                                     name="name"
                                     rules={[{ required: true, message: "Nomi yozilmagan!" }]}
                               >
-                                    <Input placeholder="Filial nomini kiriting" />
+                                    <Input className="text-lg" placeholder="Filial nomini kiriting" />
                               </Form.Item>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-black"}`}>Filial telefon raqam</p>}
+                                    label={<p className={`${theme ? "text-black" : "text-black"} text-xl font-medium`}>Filial telefon raqam</p>}
                                     style={{ marginBottom: '10px' }}
                                     name="phone_number"
                                     rules={[{ required: true, message: "Raqam yozilmagan!" }]}
@@ -90,29 +90,29 @@ export const Add = ({ addModal, setAddModal, refresh, setRefresh }) => {
                                           onValueChange={(values) => {
                                                 setPhoneNumber(values.value)
                                           }}
-                                          className="w-full px-2 py-1 border rounded bg-white focus-visible:outline-none "
+                                          className="w-full text-lg px-2 py-1 border rounded bg-white focus-visible:outline-none "
                                     />
                               </Form.Item>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-black"}`}>Filial kordinatasi</p>}
+                                    label={<p className={`${theme ? "text-black" : "text-black"} text-xl font-medium`}>Filial joylashuvi (kordinatasi)</p>}
                                     style={{ marginBottom: '10px' }}
                                     name="location"
                                     rules={[{ required: true, message: "Manzil 41.336409, 69.2099291 shu formatda bo'lishi kerak!", validator: validateCoordinates }]}
                               >
-                                    <Input
-                                          placeholder="Filial kordinatalari (41.336409, 69.2099291)"
+                                    <Input className="text-lg"
+                                          placeholder="41.336409, 69.2099291"
                                     />
                               </Form.Item>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-black"}`}>Telegram username</p>}
+                                    label={<p className={`${theme ? "text-black" : "text-black"} text-xl font-medium`}>Telegram username</p>}
                                     style={{ marginBottom: '10px' }}
                                     name="telegram"
                                     rules={[{ required: true, message: "Izoh yozilmagan!" }]}
                               >
-                                    <Input placeholder="Filial telegram username" />
+                                    <Input className="text-lg" placeholder="Filial telegram username" />
                               </Form.Item>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-black"}`}>Filial logo</p>}
+                                    label={<p className={`${theme ? "text-black" : "text-black"} text-xl font-medium`}>Filial logo</p>}
                                     name="logo"
                                     style={{ marginBottom: '10px' }}
                                     className="mb-2"
@@ -130,7 +130,7 @@ export const Add = ({ addModal, setAddModal, refresh, setRefresh }) => {
                                     </Upload>
                               </Form.Item>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-black"}`}>Filial cover uchun rasm</p>}
+                                    label={<p className={`${theme ? "text-black" : "text-black"} text-xl font-medium`}>Filial cover uchun rasm</p>}
                                     style={{ marginBottom: '20px' }}
                                     name="cover"
                                     className="mb-2"

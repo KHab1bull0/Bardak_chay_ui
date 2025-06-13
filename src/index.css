@@ -39,6 +39,12 @@
   border-radius: 2px;
 }
 
+.fji{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .w-full {
   width: 100% !important;
 }
