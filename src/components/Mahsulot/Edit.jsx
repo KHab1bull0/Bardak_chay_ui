@@ -60,22 +60,22 @@ export const Edit = ({ form, selected, setSelected, editModal, setEditModal, ref
       return (
             <div>
                   <CustomModal
-                        title="Mahsulot"
+                        // title="Mahsulot"
                         open={editModal}
                         onCancel={() => {
                               setEditModal(false)
                         }}
-                        className={`${theme ? "bg-gray-500" : "bg-beji"} rounded-lg shadow-lg w-[30%] py-6 px-4`}
+                        className={`${theme ? "bg-dark" : "bg-beji"} rounded-lg shadow-lg w-[30%] py-6 px-4`}
                         footer={
                               <div className="flex justify-between">
                                     <button
-                                          className={`${theme ? "bg-gray-700 text-white" : "bg-orange text-white font-semibold"} p-2 rounded-xl hover:scale-105 transition-transform`}
+                                          className={`${theme ? "bg-brown text-white" : "bg-orange text-white "} p-2 rounded-xl font-semibold hover:scale-105 transition-transform`}
                                           onClick={deleteProductFn}
                                     >
                                           O'chirish
                                     </button>
                                     <button
-                                          className={`${theme ? "bg-gray-700 text-white" : "bg-white text-black font-semibold"} p-2 rounded-xl hover:scale-105 transition-transform`}
+                                          className={`${theme ? "bg-brown text-white" : "bg-white text-black "} p-2 rounded-xl font-semibold hover:scale-105 transition-transform`}
                                           onClick={() => form.submit()}
                                     >
                                           Saqlash
@@ -85,35 +85,35 @@ export const Edit = ({ form, selected, setSelected, editModal, setEditModal, ref
                   >
                         <Form layout="vertical" form={form} onFinish={editCategoryFn}>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-gray-700"} font-medium text-base`}>Mahsulot nomi</p>}
+                                    label={<p className={`${theme ? "text-black" : "text-gray-700"} font-medium text-xl`}>Mahsulot nomi</p>}
                                     style={{ marginBottom: '10px' }}
                                     name="name"
                               >
                                     <Input className="text-lg" placeholder="Nomini kiriting" />
                               </Form.Item>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-gray-700"} font-medium text-base`}>Mahsulot uchun izoh</p>}
+                                    label={<p className={`${theme ? "text-black" : "text-gray-700"} font-medium text-xl`}>Mahsulot uchun izoh</p>}
                                     style={{ marginBottom: '10px' }}
                                     name="description"
                               >
                                     <TextArea className="text-lg" placeholder="Izoh kiriting" autoSize={{ minRows: 2 }} />
                               </Form.Item>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-gray-700"} font-medium text-base`}>{"Mahsulot narxi (UZS) da"}</p>}
+                                    label={<p className={`${theme ? "text-black" : "text-gray-700"} font-medium text-xl`}>{"Mahsulot narxi (UZS) da"}</p>}
                                     style={{ marginBottom: '10px' }}
                                     name="price"
                               >
                                     <Input className="text-lg" type="number" placeholder="Narxini kiriting" />
                               </Form.Item>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-gray-700"} font-medium text-base`}>{"Mahsulot vazni (gr, ml)"}</p>}
+                                    label={<p className={`${theme ? "text-black" : "text-gray-700"} font-medium text-xl`}>{"Mahsulot vazni (gr, ml)"}</p>}
                                     style={{ marginBottom: '10px' }}
                                     name="weight"
                               >
                                     <Input className="text-lg" placeholder="Vaznini kiriting" />
                               </Form.Item>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-gray-700"} font-medium text-base`}>{"Mahsulot o'lchami (Kichik, o'rta, katta)"}</p>}
+                                    label={<p className={`${theme ? "text-black" : "text-gray-700"} font-medium text-xl`}>{"Mahsulot o'lchami (Kichik, o'rta, katta)"}</p>}
                                     style={{ marginBottom: '10px' }}
                                     name="size"
                               >
@@ -127,7 +127,7 @@ export const Edit = ({ form, selected, setSelected, editModal, setEditModal, ref
                                     </Select>
                               </Form.Item>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-gray-700"} font-medium text-base`}>Mahsulotni rasmi</p>}
+                                    label={<p className={`${theme ? "text-black" : "text-gray-700"} font-medium text-xl`}>Mahsulotni rasmi</p>}
                                     style={{ marginBottom: '20px' }}
                                     name="image"
                                     className="mb-2"
@@ -145,7 +145,7 @@ export const Edit = ({ form, selected, setSelected, editModal, setEditModal, ref
                                     </Upload>
                               </Form.Item>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-gray-700"} font-medium text-base`}>{"Mahsulot kategoriyasi"}</p>}
+                                    label={<p className={`${theme ? "text-black" : "text-gray-700"} font-medium text-xl`}>{"Mahsulot kategoriyasi"}</p>}
                                     style={{ marginBottom: '20px' }}
                                     name="category_id"
                               >

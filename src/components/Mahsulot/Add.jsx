@@ -43,16 +43,16 @@ export const Add = ({ addModal, setAddModal, refresh, setRefresh, categories }) 
       return (
             <div>
                   <CustomModal
-                        title="Mahsulot"
+                        // title="Mahsulot"
                         open={addModal}
                         onCancel={() => {
                               setAddModal(false)
                         }}
-                        className={`${theme ? "main-bg-color-dark" : "bg-beji"} rounded-lg shadow-lg w-[30%] py-6 px-4`}
+                        className={`${theme ? "bg-dark" : "bg-beji"} rounded-lg shadow-lg w-[30%] py-6 px-4`}
                         footer={
                               <div className="flex justify-end gap-2">
                                     <button
-                                          className={`${theme ? "bg-gray-700 text-white" : "bg-white text-black font-semibold"} p-2 rounded-xl hover:scale-105 transition-transform`}
+                                          className={`${theme ? "bg-brown text-white" : "bg-white text-black "} p-2 rounded-xl font-semibold hover:scale-105 transition-transform`}
                                           onClick={() => form.submit()}
                                     >
                                           Saqlash
@@ -62,7 +62,7 @@ export const Add = ({ addModal, setAddModal, refresh, setRefresh, categories }) 
                   >
                         <Form layout="vertical" form={form} onFinish={addCategoryFn}>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-gray-700"} font-medium text-base`}>Mahsulot nomi</p>}
+                                    label={<p className={`${theme ? "text-black" : "text-gray-700"} font-medium text-xl mt-3`}>Mahsulot nomi</p>}
                                     style={{ marginBottom: '10px' }}
                                     name="name"
                                     rules={[{ required: true, message: "Nomi yozilmagan!" }]}
@@ -70,7 +70,7 @@ export const Add = ({ addModal, setAddModal, refresh, setRefresh, categories }) 
                                     <Input className="text-lg" placeholder="Nomini kiriting" />
                               </Form.Item>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-gray-700"} font-medium text-base`}>Mahsulot uchun izoh</p>}
+                                    label={<p className={`${theme ? "text-black" : "text-gray-700"} font-medium text-xl`}>Mahsulot uchun izoh</p>}
                                     style={{ marginBottom: '10px' }}
                                     name="description"
                                     rules={[{ required: true, message: "Izoh yozilmagan!" }]}
@@ -78,7 +78,7 @@ export const Add = ({ addModal, setAddModal, refresh, setRefresh, categories }) 
                                     <TextArea className="text-lg" placeholder="Izoh kiriting" autoSize={{ minRows: 2 }} />
                               </Form.Item>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-gray-700"} font-medium text-base`}>{"Mahsulot narxi (UZS) da"}</p>}
+                                    label={<p className={`${theme ? "text-black" : "text-gray-700"} font-medium text-xl`}>{"Mahsulot narxi (UZS) da"}</p>}
                                     style={{ marginBottom: '10px' }}
                                     name="price"
                                     rules={[{ required: true, message: "Narxi belgilanmagan!" }]}
@@ -86,7 +86,7 @@ export const Add = ({ addModal, setAddModal, refresh, setRefresh, categories }) 
                                     <Input className="text-lg" type="number" placeholder="Narxini kiriting" />
                               </Form.Item>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-gray-700"} font-medium text-base`}>{"Mahsulot vazni (gr, ml)"}</p>}
+                                    label={<p className={`${theme ? "text-black" : "text-gray-700"} font-medium text-xl`}>{"Mahsulot vazni (gr, ml)"}</p>}
                                     style={{ marginBottom: '10px' }}
                                     name="weight"
                                     rules={[{ required: false, message: "Vazni belgilanmagan!" }]}
@@ -94,7 +94,7 @@ export const Add = ({ addModal, setAddModal, refresh, setRefresh, categories }) 
                                     <Input className="text-xl" placeholder="Vaznini kiriting" />
                               </Form.Item>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-gray-700"} font-medium text-base`}>{"Mahsulot o'lchami (Kichik, o'rta, katta)"}</p>}
+                                    label={<p className={`${theme ? "text-black" : "text-gray-700"} font-medium text-xl`}>{"Mahsulot o'lchami (Kichik, o'rta, katta)"}</p>}
                                     style={{ marginBottom: '10px' }}
                                     name="size"
                                     rules={[{ required: false, message: "O'lchamini belgilanmagan!" }]}
@@ -109,7 +109,7 @@ export const Add = ({ addModal, setAddModal, refresh, setRefresh, categories }) 
                                     </Select>
                               </Form.Item>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-gray-700"} font-medium text-base`}>Mahsulotni rasmi</p>}
+                                    label={<p className={`${theme ? "text-black" : "text-gray-700"} font-medium text-xl`}>Mahsulotni rasmi</p>}
                                     style={{ marginBottom: '20px' }}
                                     name="image"
                                     className="mb-2"
@@ -128,7 +128,7 @@ export const Add = ({ addModal, setAddModal, refresh, setRefresh, categories }) 
                                     </Upload>
                               </Form.Item>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-gray-700"} font-medium text-base`}>{"Mahsulot kategoriyasi"}</p>}
+                                    label={<p className={`${theme ? "text-black" : "text-gray-700"} font-medium text-xl`}>{"Mahsulot kategoriyasi"}</p>}
                                     style={{ marginBottom: '10px' }}
                                     name="category_id"
                                     rules={[{ required: true, message: "Kategoriya belgilanmagan!" }]}

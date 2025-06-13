@@ -68,22 +68,22 @@ export const Edit = ({ form, selected, setSelected, editModal, setEditModal, ref
       return (
             <div>
                   <CustomModal
-                        title="Kategoriya"
+                        // title={<p className="text-black font-semibold">Kategoriya</p>}
                         open={editModal}
                         onCancel={() => {
                               setEditModal(false)
                         }}
-                        className={`${theme ? "bg-gray-500" : "bg-beji"} rounded-lg shadow-lg w-[30%] py-6 px-4`}
+                        className={`${theme ? "bg-dark" : "bg-beji"} rounded-lg shadow-lg w-[30%] py-6 px-4`}
                         footer={
                               <div className="flex justify-between">
                                     <button
-                                          className={`${theme ? "bg-gray-700 text-white" : "bg-orange2 text-white font-semibold"} p-2 rounded-xl hover:scale-105 transition-transform`}
+                                          className={`${theme ? "bg-brown text-white" : "bg-orange2 text-white"} p-2 rounded-xl font-semibold hover:scale-105 transition-transform`}
                                           onClick={deleteCategoryFn}
                                     >
                                           O'chirish
                                     </button>
                                     <button
-                                          className={`${theme ? "bg-gray-700 text-white" : "bg-white text-black font-semibold"} p-2 rounded-xl hover:scale-105 transition-transform`}
+                                          className={`${theme ? "bg-brown text-white" : "bg-white text-black"} p-2 rounded-xl font-semibold hover:scale-105 transition-transform`}
                                           onClick={() => form.submit()}
                                     >
                                           Saqlash
@@ -93,21 +93,21 @@ export const Edit = ({ form, selected, setSelected, editModal, setEditModal, ref
                   >
                         <Form layout="vertical" form={form} onFinish={editCategoryFn}>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-black"} font-medium text-base`}>Kategoriya nomi</p>}
+                                    label={<p className={`${theme ? "text-black" : "text-black"} font-medium text-xl mt-3`}>Kategoriya nomi</p>}
                                     style={{ marginBottom: '10px' }}
                                     name="name"
                               >
-                                    <Input />
+                                    <Input className="text-xl" />
                               </Form.Item>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-black"} font-medium text-base`}>Kategoriya uchun izoh</p>}
+                                    label={<p className={`${theme ? "text-black" : "text-black"} font-medium text-xl`}>Kategoriya uchun izoh</p>}
                                     style={{ marginBottom: '10px' }}
                                     name="description"
                               >
-                                    <TextArea autoSize={{ minRows: 2 }} />
+                                    <TextArea className="text-xl" autoSize={{ minRows: 2 }} />
                               </Form.Item>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-black"} font-medium text-base`}>Kategoriya uchun logo</p>}
+                                    label={<p className={`${theme ? "text-black" : "text-black"} font-medium text-xl`}>Kategoriya uchun logo</p>}
                                     name="logo"
                                     style={{ marginBottom: '10px' }}
                                     className="mb-2"
@@ -125,7 +125,7 @@ export const Edit = ({ form, selected, setSelected, editModal, setEditModal, ref
                                     </Upload>
                               </Form.Item>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-black"} font-medium text-base`}>Kategoriya uchun image</p>}
+                                    label={<p className={`${theme ? "text-black" : "text-black"} font-medium text-xl`}>Kategoriya uchun image</p>}
                                     style={{ marginBottom: '20px' }}
                                     name="image"
                                     className="mb-2"
@@ -143,7 +143,7 @@ export const Edit = ({ form, selected, setSelected, editModal, setEditModal, ref
                                     </Upload>
                               </Form.Item>
                               <Form.Item
-                                    label={<p className={`${theme ? "text-gray-200" : "text-gray-700"} font-medium text-base`}>{"Filial"}</p>}
+                                    label={<p className={`${theme ? "text-black" : "text-gray-700"} font-medium text-xl`}>{"Filial"}</p>}
                                     style={{ marginBottom: '20px' }}
                                     name="branch_id"
                               >
