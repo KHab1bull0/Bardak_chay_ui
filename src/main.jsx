@@ -15,6 +15,7 @@ import { PrivateRoute } from './components/Provider/PrivateRoute.jsx'
 import { Menu } from './Layouts/Menu.jsx'
 import { MainPage } from './pages/Menu/Main.jsx'
 import { Branch } from './pages/Branch.jsx'
+import { Reklama } from './pages/Reklama.jsx'
 
 
 const rooter = createBrowserRouter([
@@ -78,6 +79,14 @@ const rooter = createBrowserRouter([
         element:
           <PrivateRoute>
             <Branch />
+          </PrivateRoute>,
+      },
+      //reklama yuboruvchi 
+      {
+        path: 'reklama',
+        element:
+          <PrivateRoute>
+            <Reklama/>
           </PrivateRoute>,
       }
     ]
