@@ -117,6 +117,21 @@ export const Dashboard = () => {
             onClick: () => {
                 navigate('/branch')
             },
+        },
+        {
+            key: "6",
+            label: (
+              <div className="flex items-center p-2 pl-5 gap-4">
+                <BellFilled
+                  style={{
+                    fontSize: 25,
+                    color: theme ? "white" : "black",
+                  }}
+                />
+                {!collapsed && <p className="text-lg font-medium">Reklama</p>}
+              </div>
+            ),
+            onClick: () => navigate("/reklama"),
         }
     ]
 
