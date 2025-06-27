@@ -16,6 +16,7 @@ import { Menu } from './Layouts/Menu.jsx'
 import { MainPage } from './pages/Menu/Main.jsx'
 import { Branch } from './pages/Branch.jsx'
 import { Reklama } from './pages/Reklama.jsx'
+import { UsersList } from './pages/Users.jsx'
 
 
 const rooter = createBrowserRouter([
@@ -87,6 +88,14 @@ const rooter = createBrowserRouter([
         element:
           <PrivateRoute>
             <Reklama/>
+          </PrivateRoute>,
+      },
+      //userlar uchun
+      {
+        path: 'users',
+        element:
+          <PrivateRoute>
+            < UsersList/>
           </PrivateRoute>,
       }
     ]
