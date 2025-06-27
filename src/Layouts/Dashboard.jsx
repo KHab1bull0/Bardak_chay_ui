@@ -8,6 +8,8 @@ import { Context } from "../components/Context"
 import { BarChartOutlined, BellFilled, BranchesOutlined, MenuOutlined, MoonFilled, OrderedListOutlined, PieChartOutlined, ProductOutlined, SunFilled } from "@ant-design/icons"
 import { Logout, TrendingUpOutlined } from "@mui/icons-material"
 import { Toaster } from "react-hot-toast"
+import { UserOutlined } from "@ant-design/icons";
+
 
 
 export const Dashboard = () => {
@@ -30,7 +32,12 @@ export const Dashboard = () => {
             selectedKey = '4';
         } else if (path === '/branch') {
             selectedKey = '5';
+        }   else if (path === '/reklama') {
+            selectedKey = '6';
+        } else if (path === '/users') {
+            selectedKey = '7';
         }
+
 
         setSelectedKey(selectedKey);
     }, [location.pathname]);
@@ -132,7 +139,18 @@ export const Dashboard = () => {
               </div>
             ),
             onClick: () => navigate("/reklama"),
-        }
+        },
+        {
+            key: "7",
+            label: (
+              <div className="flex items-center p-2 pl-5 gap-4">
+                <UserOutlined style={{ fontSize: 25, color: theme ? "white" : "black" }} />
+                {!collapsed && <p className="text-lg font-medium">Mijozlar</p>}
+              </div>
+            ),
+            onClick: () => navigate("/users"),
+          }
+          
     ]
 
 
