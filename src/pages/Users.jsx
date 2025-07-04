@@ -1,6 +1,7 @@
+// src/pages/Users.jsx  (yoki sizdagi joylashuv)
 import { useEffect, useState } from 'react';
 import { Table, Typography, Tag, message, Card } from 'antd';
-import api from '../api';                          // ← instansiya
+import api from '../api';            // <- axios instansiya
 
 const { Title } = Typography;
 
@@ -8,16 +9,19 @@ const UsersList = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  // Maʼlumotlarni olish
+  /** Foydalanuvchilarni olish */
   const fetchUsers = async () => {
+    setLoading(true);
     try {
-      setLoading(true);
+      // ✅ 1) Endpoint – Swagger’da ko‘rsatilganidek
+      const res = await api.get('/users');
 
-      // Faqat nisbiy endpoint
-      const res = await api.get('/users/getAll');
-
-      // Backend turiga moslashuvchan parsing
-      const data = Array.isArray(res.data) ? res.data : res.data?.users || [];
+      /* 
+        ✅ 2) Backend:
+            - Agar massiv:  res.data         => [...]
+            - Agar objekt:  res.data.users    => [...]
+      */
+      const data = Array.isArray(res.data) ? res.data : res.data?.users ?? [];
       setUsers(data);
     } catch (err) {
       console.error(err);
@@ -29,6 +33,7 @@ const UsersList = () => {
 
   useEffect(() => { fetchUsers(); }, []);
 
+  /** Jadval ustunlari */
   const columns = [
     { title: 'Ism', dataIndex: 'f_name', key: 'f_name' },
     {
@@ -37,8 +42,8 @@ const UsersList = () => {
       key: 'user_name',
       render: (u) => u || '-',
     },
-    { title: 'Telefon raqam', dataIndex: 'phone_number', key: 'phone_number' },
-    { title: 'Chat ID', dataIndex: 'chat_id', key: 'chat_id' },
+    { title: 'Telefon', dataIndex: 'phone_number', key: 'phone_number' },
+    { title: 'Chat ID', dataIndex: 'chat_id', key: 'chat_id' },
     {
       title: 'Status',
       dataIndex: 'last_state',
@@ -58,14 +63,15 @@ const UsersList = () => {
   return (
     <Card
       className="max-w-6xl mx-auto rounded-2xl shadow-lg"
-      bodyStyle={{ padding: '2rem' }}
+      bodyStyle={{ padding: 32 }}
     >
-      <Title level={2} className="!mb-6 text-center">
+      <Title level={2} style={{ textAlign: 'center', marginBottom: 24 }}>
         Foydalanuvchilar ro‘yxati
       </Title>
 
       <Table
-        rowKey="id"
+        /* ✅ 3) Agar `id` yo‘q bo‘lsa, chat_id bilan unikallikni ta’minlaymiz */
+        rowKey={(record) => record.id ?? record.chat_id}
         dataSource={users}
         columns={columns}
         loading={loading}
@@ -76,5 +82,3 @@ const UsersList = () => {
 };
 
 export default UsersList;
-
-
