@@ -13,7 +13,7 @@ export const UsersList = () => {
       setLoading(true);
 
       // Faqat nisbiy endpoint
-      const res = await api.get('/users/getAll');
+      const res = await api.get('http://159.223.83.203:8080/api/v1/users/getAll');
 
       // Backend turiga moslashuvchan parsing
       const data = Array.isArray(res.data) ? res.data : res.data?.users || [];
@@ -73,4 +73,5 @@ export const UsersList = () => {
     </Card>
   );
 };
+
 
