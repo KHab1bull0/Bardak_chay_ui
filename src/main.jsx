@@ -1,114 +1,135 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
-import './index.css'
-import App from './App.jsx'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
+import "./index.css";
+import App from "./App.jsx";
 
-import { Dashboard } from './Layouts/Dashboard.jsx'
-import { Buyurtma } from './pages/Buyurtma.jsx'
-import { Kategoriya } from './pages/Kategoriya.jsx'
-import { Mahsulot } from './pages/Mahsulot.jsx'
-import { ContextProvider } from './components/Context.jsx'
-import { Login } from './pages/Auth/Login.jsx'
-import { PublicRoute } from './components/Provider/PublicRoute.jsx'
-import { PrivateRoute } from './components/Provider/PrivateRoute.jsx'
-import { Menu } from './Layouts/Menu.jsx'
-import { MainPage } from './pages/Menu/Main.jsx'
-import { Branch } from './pages/Branch.jsx'
-import { Reklama } from './pages/Reklama.jsx'
-import { UsersList } from './pages/Users.jsx'
-
+import { Dashboard } from "./Layouts/Dashboard.jsx";
+import { Buyurtma } from "./pages/Buyurtma.jsx";
+import { Kategoriya } from "./pages/Kategoriya.jsx";
+import { Mahsulot } from "./pages/Mahsulot.jsx";
+import { ContextProvider } from "./components/Context.jsx";
+import { Login } from "./pages/Auth/Login.jsx";
+import { PublicRoute } from "./components/Provider/PublicRoute.jsx";
+import { PrivateRoute } from "./components/Provider/PrivateRoute.jsx";
+import { Menu } from "./Layouts/Menu.jsx";
+import { MainPage } from "./pages/Menu/Main.jsx";
+import { Branch } from "./pages/Branch.jsx";
+import { Reklama } from "./pages/Reklama.jsx";
+import { UsersList } from "./pages/Users.jsx";
+import { Deals } from "./pages/Deal.jsx";
 
 const rooter = createBrowserRouter([
   {
-    path: '/signin',
+    path: "/signin",
     element: <Login />,
   },
   {
     path: "/menu/:chatId",
-    element:
+    element: (
       <PublicRoute>
         <Menu />
-      </PublicRoute>,
+      </PublicRoute>
+    ),
     children: [
       {
         index: true,
-        element:
+        element: (
           <PublicRoute>
             <MainPage />
-          </PublicRoute>,
-      }
-    ]
+          </PublicRoute>
+        ),
+      },
+    ],
   },
   {
-    path: '/',
-    element:
+    path: "/",
+    element: (
       <PrivateRoute>
         <Dashboard />
-      </PrivateRoute>,
+      </PrivateRoute>
+    ),
     children: [
       {
-        path: '/',
-        element:
+        path: "/",
+        element: (
           <PrivateRoute>
             <App />
-          </PrivateRoute>,
+          </PrivateRoute>
+        ),
       },
       {
-        path: 'buyurtma',
-        element:
+        path: "buyurtma",
+        element: (
           <PrivateRoute>
             <Buyurtma />
-          </PrivateRoute>,
+          </PrivateRoute>
+        ),
       },
       {
-        path: 'kategoriya',
-        element:
+        path: "kategoriya",
+        element: (
           <PrivateRoute>
             <Kategoriya />
-          </PrivateRoute>,
+          </PrivateRoute>
+        ),
       },
       {
-        path: 'mahsulot',
-        element:
+        path: "mahsulot",
+        element: (
           <PrivateRoute>
             <Mahsulot />
-          </PrivateRoute>,
+          </PrivateRoute>
+        ),
       },
       {
-        path: 'branch',
-        element:
+        path: "branch",
+        element: (
           <PrivateRoute>
             <Branch />
-          </PrivateRoute>,
+          </PrivateRoute>
+        ),
       },
-      //reklama yuboruvchi 
+      //reklama yuboruvchi
       {
-        path: 'reklama',
-        element:
+        path: "reklama",
+        element: (
           <PrivateRoute>
-            <Reklama/>
-          </PrivateRoute>,
+            <Reklama />
+          </PrivateRoute>
+        ),
       },
       //userlar uchun
       {
-        path: 'users',
-        element:
+        path: "users",
+        element: (
           <PrivateRoute>
-            < UsersList/>
-          </PrivateRoute>,
-      }
-    ]
+            <UsersList />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "deal",
+        element: (
+          <PrivateRoute>
+            <Deals />
+          </PrivateRoute>
+        ),
+      },
+    ],
   },
   {
     path: "*",
-    element: <Navigate to='/' />
-  }
-])
+    element: <Navigate to="/" />,
+  },
+]);
 
-
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <ContextProvider>
     <RouterProvider router={rooter} />
   </ContextProvider>
-)
+);
