@@ -32,7 +32,10 @@ export const Dashboard = () => {
     const path = location.pathname;
     let selectedKey = "1"; // Asosiy qiymat
 
-    if (path === "/buyurtma") {
+    if (path === "/statistika") {
+      selectedKey = "1";
+    }
+     else if (path === "/buyurtma") {
       selectedKey = "2";
     } else if (path === "/kategoriya") {
       selectedKey = "3";
@@ -63,7 +66,7 @@ export const Dashboard = () => {
         </div>
       ),
       onClick: () => {
-        navigate("/");
+        navigate("/statistika");
       },
     },
     {

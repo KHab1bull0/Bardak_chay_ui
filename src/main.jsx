@@ -22,6 +22,7 @@ import { Branch } from "./pages/Branch.jsx";
 import { Reklama } from "./pages/Reklama.jsx";
 import { UsersList } from "./pages/Users.jsx";
 import { Deals } from "./pages/Deal.jsx";
+import { Statistika } from "./pages/Statistika.jsx";
 
 const rooter = createBrowserRouter([
   {
@@ -120,6 +121,15 @@ const rooter = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      //statistika kerak
+      {
+        path: "statistika",
+        element: (
+          <PrivateRoute>
+            <Statistika />
+          </PrivateRoute>
+        ),
+      }
     ],
   },
   {
