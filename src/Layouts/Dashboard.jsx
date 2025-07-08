@@ -38,13 +38,13 @@ export const Dashboard = () => {
       selectedKey = "3";
     } else if (path === "/mahsulot") {
       selectedKey = "4";
-    } else if (path === "/branch") {
+    } else if (path === "/deal") {
       selectedKey = "5";
     } else if (path === "/reklama") {
       selectedKey = "6";
     } else if (path === "/users") {
       selectedKey = "7";
-    } else if (path === "/deal") {
+    } else if (path === "/branch") {
       selectedKey = "8";
     }
 
