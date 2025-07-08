@@ -47,7 +47,7 @@ export const UsersList = () => {
       ),
     },
     {
-      title: 'Oxirgi aktivlik',
+      title: 'qachon ro‘yxatdan o‘tgan',
       dataIndex: 'last_active',
       key: 'last_active',
       render: (d) => (d ? new Date(d).toLocaleString() : '-'),
